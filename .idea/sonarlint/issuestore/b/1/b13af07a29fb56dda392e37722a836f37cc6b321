@@ -1,0 +1,45 @@
+
+t	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(Ñı×ÿÿÿÿÿ
+j
+java:S1104"TMake llamadas a static final constant or non-public and provide accessors if needed.(õ“Ñ…
+o
+java:S1104"TMake clientes a static final constant or non-public and provide accessors if needed.(óıÔ¤øÿÿÿÿ
+u
+java:S1104"ZMake llamadasPorNif a static final constant or non-public and provide accessors if needed.(—ªß±ÿÿÿÿÿ
+W
+java:S1117j"<Rename "llamadas" which hides the field declared at line 16.(¶˜ÊÛøÿÿÿÿ
+X
+java:S1117©"<Rename "facturas" which hides the field declared at line 20.(Ÿ™³§ûÿÿÿÿ
+c
+java:S2095Ğ"MUse try-with-resources or close this "FileInputStream" in a "finally" clause.(¬¬®D
+‘
+java:S1319"vThe type of the "llamadasPorNif" object should be an interface such as "Map" rather than the implementation "HashMap".(—ªß±ÿÿÿÿÿ
+g
+java:S2095º"PUse try-with-resources or close this "ObjectOutputStream" in a "finally" clause.(«Şó°
+j
+java:S1104"TMake facturas a static final constant or non-public and provide accessors if needed.(Ëÿ€›
+f
+java:S2095Ô"OUse try-with-resources or close this "ObjectInputStream" in a "finally" clause.(´¢ß
+j
+java:S2095¹"NUse try-with-resources or close this "FileOutputStream" in a "finally" clause.(³Ûç¼ûÿÿÿÿ
+W
+java:S1117I"<Rename "clientes" which hides the field declared at line 14.(Ôû£âüÿÿÿÿ
+‹
+java:S1319"pThe type of the "clientes" object should be an interface such as "Map" rather than the implementation "HashMap".(óıÔ¤øÿÿÿÿ
+?
+java:S1148Æ"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ
+u
+java:S1104"ZMake facturasPorNif a static final constant or non-public and provide accessors if needed.(ö‚†Üşÿÿÿÿ
+e
+java:S3824†"NReplace this "Map.get()" and condition with a call to "Map.computeIfAbsent()".(ßÅ¾Ô
+
+java:S1319"yThe type of the "facturasPorCodigo" object should be an interface such as "Map" rather than the implementation "HashMap".(ş‘Í½
+?
+java:S1148à"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ
+‘
+java:S1319"vThe type of the "facturasPorNif" object should be an interface such as "Map" rather than the implementation "HashMap".(ö‚†Üşÿÿÿÿ
+W	java:S125‰"<This block of commented-out lines of code should be removed.(“Â…‚şÿÿÿÿ
+a
+java:S1192µ"JDefine a constant instead of duplicating this literal "datos.bin" 5 times.(ÎÔ—ö
+s
+java:S1104"]Make facturasPorCodigo a static final constant or non-public and provide accessors if needed.(ş‘Í½

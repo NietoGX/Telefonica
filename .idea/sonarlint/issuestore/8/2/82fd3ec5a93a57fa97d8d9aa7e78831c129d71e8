@@ -1,0 +1,115 @@
+
+H
+java:S3398q"+Move this method into "EscuchadorFacturas".(¬×ÖÄ8¢Êéš¦.
+k	java:S100Ò"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(İ¢ˆ¬8†Å„›¦.
+N
+java:S3398Á"+Move this method into "EscuchadorFacturas".(ç¦»Ùÿÿÿÿÿ8™ÿÜ›¦.
+
+java:S1186:"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(«»ÌÌ8õ¨››¦.
+_
+java:S1858ä"A"getText" returns a string, there's no need to call "toString()".(Šš‹8É”çœ¦.
+e
+java:S1192"HDefine a constant instead of duplicating this literal "Fecha: " 3 times.(ù”ÿí8£„óš¦.
+^
+java:S1117Ã";Rename "tarifaT" which hides the field declared at line 38.(¹ªóâûÿÿÿÿ8Ò«Şœ¦.
+¤
+java:S1186å"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(ËñÁùùÿÿÿÿ8†Å„›¦.
+Z
+java:S1128"8Remove this unused import 'InterfazSwing.Modelo.Modelo'.(¤»¿ıÿÿÿÿ8è‰¼ò¥.
+c
+java:S1192·"FDefine a constant instead of duplicating this literal "Noche" 3 times.(Ş™µ38†Å„›¦.
+p	java:S100Û"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(İÙÿ×ıÿÿÿÿ8¹¨–¦.
+k	java:S100¡"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Éá¼£8ŸÄ¿š¦.
+Y	java:S125í"<This block of commented-out lines of code should be removed.(Û˜“”8¨Ëõœ¦.
+o	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(Ç‡Ø¹
+p	java:S100–"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÛßÄÏıÿÿÿÿ8†Å„›¦.
+^
+java:S1117¹";Rename "tarifaT" which hides the field declared at line 38.(¹ªóâûÿÿÿÿ8Ò«Şœ¦.
+^
+java:S1117";Rename "tarifaT" which hides the field declared at line 38.(¹ªóâûÿÿÿÿ8Ò«Şœ¦.
+V	java:S106å"9Replace this use of System.out or System.err by a logger.(÷ÙÅµ8›Õ¥¦.
+p	java:S100’"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(³ÅÉÚüÿÿÿÿ8õ¨››¦.
+d
+java:S1128"BRemove this unused import 'InterfazSwing.Controlador.Controlador'.(–éÀìıÿÿÿÿ8ó¥¼ò¥.
+j	java:S100q"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¬×ÖÄ8¢Êéš¦.
+]
+java:S1117Ç":Rename "submit" which hides the field declared at line 42.(ÚŒ“¤úÿÿÿÿ8Ò«Şœ¦.
+k
+java:S1192¸"HDefine a constant instead of duplicating this literal "Domingo" 3 times.(¦â™øÿÿÿÿ8†Å„›¦.
+¤
+java:S1186‚"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(’™èÉùÿÿÿÿ8ÀÕá›¦.
+]
+java:S1117Š":Rename "submit" which hides the field declared at line 42.(ÚŒ“¤úÿÿÿÿ8Ò«Şœ¦.
+p	java:S100§"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(²üÆ¿úÿÿÿÿ8ÇÇÇ›¦.
+]
+java:S1117¸":Rename "submit" which hides the field declared at line 42.(ÚŒ“¤úÿÿÿÿ8Ò«Şœ¦.
+p	java:S100§"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÉÀûŒûÿÿÿÿ8†Å„›¦.
+_
+java:S3252ª"AUse static access with "java.awt.Component" for "LEFT_ALIGNMENT".(É¤‰8èñ‚›¦.
+k
+java:S3252k"IUse static access with "javax.swing.WindowConstants" for "EXIT_ON_CLOSE".(º“¬üÿÿÿÿ8İöŞò¥.
+M
+java:S3398å"*Move this method into "EscuchadorCliente".(ËñÁùùÿÿÿÿ8†Å„›¦.
+Y	java:S125é"<This block of commented-out lines of code should be removed.(˜”úÖ8‘ïœ¦.
+a
+java:S1128"DRemove this unused import 'InterfazSwing.Vista.ImplementacionVista'.(æ¼”§8½œ”„¦.
+p	java:S100á"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(€Ì‹Åûÿÿÿÿ8†Å„›¦.
+k	java:S100·"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¼Ñçí8†Å„›¦.
+k	java:S100õ"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¬œş¤8†Å„›¦.
+y
+java:S1192Ê"VDefine a constant instead of duplicating this literal "          Fecha fin: " 3 times.(ÍûØüÿÿÿÿ8´ƒé›¦.
+[	java:S106ã"9Replace this use of System.out or System.err by a logger.(Áô©ùÿÿÿÿ8¹îòœ¦.
+r
+java:S1192È"ODefine a constant instead of duplicating this literal "Fecha inicio: " 3 times.(¬ƒ¶Øüÿÿÿÿ8´ƒé›¦.
+J
+java:S1604@"(Make this anonymous inner class a lambda(Ô¶µÿşÿÿÿÿ8¢¤½ò¥.
+S
+java:S1128"6Remove this unused import 'javax.swing.border.Border'.(şŒ©ƒ8³ıÇ„¦.
+k
+java:S1192Š"HDefine a constant instead of duplicating this literal "Enviar" 13 times.(ÚŒ“¤úÿÿÿÿ8öò–¦.
+]
+java:S1117":Rename "submit" which hides the field declared at line 42.(ÚŒ“¤úÿÿÿÿ8Ò«Şœ¦.
+r	java:S117I"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(‹è¢±üÿÿÿÿ8ÄÍ¦.
+p	java:S100Á"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ç¦»Ùÿÿÿÿÿ8™ÿÜ›¦.
+]
+java:S1117Ò":Rename "submit" which hides the field declared at line 42.(ÚŒ“¤úÿÿÿÿ8Ò«Şœ¦.
+]
+java:S1117—":Rename "submit" which hides the field declared at line 42.(ÚŒ“¤úÿÿÿÿ8Ò«Şœ¦.
+p	java:S100å"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ËñÁùùÿÿÿÿ8†Å„›¦.
+]
+java:S1117ö":Rename "submit" which hides the field declared at line 42.(ÚŒ“¤úÿÿÿÿ8Ò«Şœ¦.
+]	java:S125t"<This block of commented-out lines of code should be removed.(ŠûÑøÿÿÿÿ8Ú¦.
+Y	java:S125ë"<This block of commented-out lines of code should be removed.(ãØ¼8‘ïœ¦.
+L
+java:S1068"*Remove this unused "modelo" private field.(”¾×ıÿÿÿÿ8îÁ©ò¥.
+_
+java:S3252Í"AUse static access with "java.awt.Component" for "LEFT_ALIGNMENT".(É¤‰8†Å„›¦.
+M
+java:S3398è"*Move this method into "EscuchadorCliente".(‘ùºŸúÿÿÿÿ8†Å„›¦.
+^	java:S125ğ"<This block of commented-out lines of code should be removed.(ÏûÎğúÿÿÿÿ8ë²¦.
+]
+java:S1117¯":Rename "submit" which hides the field declared at line 42.(ÚŒ“¤úÿÿÿÿ8Ò«Şœ¦.
+w
+java:S1450"URemove the "modelo" field and declare it as a local variable in the relevant methods.(”¾×ıÿÿÿÿ8ÕÉ»ò¥.
+k	java:S100…"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(İ¯Î°8Ï©—¦.
+d
+java:S1192}"GDefine a constant instead of duplicating this literal "NIF: " 11 times.(çß¶õ8—µ”—¦.
+M
+java:S3398Û"*Move this method into "EscuchadorLlamada".(İÙÿ×ıÿÿÿÿ8ëå—¦.
+p	java:S100è"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(‘ùºŸúÿÿÿÿ8†Å„›¦.
+]
+java:S1117ù":Rename "submit" which hides the field declared at line 42.(ÚŒ“¤úÿÿÿÿ8Ò«Şœ¦.
+]
+java:S1128";Remove this unused import 'javax.swing.event.MenuListener'.(ÌïÅºúÿÿÿÿ8Å­Èò¥.
+q	java:S116%"PRename this field "aÃ±oT" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ú›¹šøÿÿÿÿ8Ò«Şœ¦.
+j	java:S100G"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÃœÄƒ8³šÂò¥.
+p	java:S100‚"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(’™èÉùÿÿÿÿ8ù»©—¦.
+f
+java:S1192¶"HDefine a constant instead of duplicating this literal "BÃ¡sica" 3 times.(‘ƒåş8†Å„›¦.
+]
+java:S1117Ó":Rename "submit" which hides the field declared at line 42.(ÚŒ“¤úÿÿÿÿ8Ò«Şœ¦.
+]
+java:S1117™":Rename "submit" which hides the field declared at line 42.(ÚŒ“¤úÿÿÿÿ8Ò«Şœ¦.
+k	java:S100Ä"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¹£àí8†Å„›¦.
+E
+java:S3398¡"'Move this method into "EscuchadorMenu".(Éá¼£8™µ£œ¦.

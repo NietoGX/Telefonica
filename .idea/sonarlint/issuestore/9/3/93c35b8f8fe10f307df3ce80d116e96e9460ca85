@@ -1,0 +1,144 @@
+
+d	java:S100ò"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¦ğö¨
+g	java:S117Ÿ"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ôÍ½í
+F
+java:S3398Ô"*Move this method into "EscuchadorLlamada".(èö±æùÿÿÿÿ
+D
+java:S3398€"(Move this method into "ClienteListener".(§ÅæÜüÿÿÿÿ
+i	java:S100Ö"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(£¸úûÿÿÿÿ
+l	java:S117‚	"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¶×¢€üÿÿÿÿ
+c	java:S100Ş"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ªŒ=
+o
+java:S1450"TRemove the "frame" field and declare it as a local variable in the relevant methods.(å÷Îœüÿÿÿÿ
+D
+java:S3398Ï"(Move this method into "ClienteListener".(òÍÌşùÿÿÿÿ
+g	java:S117Ç"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ì«¿
+t	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(•¹ïúúÿÿÿÿ
+g	java:S117©
+"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(„ó²ü
+Y
+java:S3252f"CUse static access with "java.awt.Component" for "CENTER_ALIGNMENT".(†’Ê‘
+i	java:S100‡"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ˆşß½ÿÿÿÿÿ
+d	java:S100Ğ"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¼îè¼
+p
+java:S2293"YReplace the type specification in this constructor call with the diamond operator ("<>").(›÷Ú
+g	java:S117€"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ì«¿
+i	java:S100€"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(§ÅæÜüÿÿÿÿ
+i	java:S100ø"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¯Æ©‚üÿÿÿÿ
+;
+java:S3398Ş"%Move this method into "MainListener".(ªŒ=
+A
+java:S3398ğ"*Move this method into "EscuchadorFactura".(„ö­Û
+i	java:S100Ï"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(òÍÌşùÿÿÿÿ
+l
+java:S1192Æ"PDefine a constant instead of duplicating this literal "Fecha de alta: " 3 times.(Óù†úÿÿÿÿ
+l	java:S117¡	"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¶×¢€üÿÿÿÿ
+u
+java:S2293¶"YReplace the type specification in this constructor call with the diamond operator ("<>").(Î…ŒÉşÿÿÿÿ
+l	java:S117¤
+"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¶×¢€üÿÿÿÿ
+i
+java:S1192Æ"MDefine a constant instead of duplicating this literal "Lista vacÃ­a" 3 times.(ÃÍÕúşÿÿÿÿ
+?
+java:S3398˜"(Move this method into "ClienteListener".(ŒÜæĞ
+F
+java:S3398ı"*Move this method into "EscuchadorLlamada".(ú—åûÿÿÿÿ
+_
+java:S3252õ"CUse static access with "java.awt.Component" for "CENTER_ALIGNMENT".(ãĞâŒûÿÿÿÿ
+A
+java:S3398­"*Move this method into "EscuchadorFactura".(’Ş´Ø
+h
+java:S1192Å
+"QDefine a constant instead of duplicating this literal "Fecha no vÃ¡lida" 3 times.(İ¨¬È
+d	java:S100ı"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¶„Æá
+—
+java:S1186:"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.( Í™ë
+Z
+java:S3252ä"CUse static access with "java.awt.Component" for "CENTER_ALIGNMENT".(†’Ê‘
+g	java:S117¡"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ôÍ½í
+i	java:S100Ô"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(èö±æùÿÿÿÿ
+_
+java:S1192Ç"HDefine a constant instead of duplicating this literal "AÃ±o: " 10 times.(ì«¿
+g	java:S117Í"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(„ó²ü
+i	java:S100ÿ"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ùòû¨şÿÿÿÿ
+e	java:S116)"PRename this field "aÃ±o2" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Óİäì
+:
+java:S1148	"#Use a logger to log this exception.(ŸÜ—
+:
+java:S1148­	"#Use a logger to log this exception.(ŸÜ—
+g	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ì«¿
+h	java:S100F"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(æ¸ÿ¶ıÿÿÿÿ
+g	java:S117 "QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ì«¿
+i	java:S116%"ORename this field "aÃ±o" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(‚Ïıµûÿÿÿÿ
+u
+java:S2293"YReplace the type specification in this constructor call with the diamond operator ("<>").(âô­øÿÿÿÿ
+r
+java:S1192È	"VDefine a constant instead of duplicating this literal "Cliente no encontrado" 7 times.(–Ìàıÿÿÿÿ
+l	java:S117ä
+"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¶×¢€üÿÿÿÿ
+d	java:S100ğ"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(„ö­Û
+:
+java:S1148Ü	"#Use a logger to log this exception.(äÍ°
+u
+java:S2293µ
+"YReplace the type specification in this constructor call with the diamond operator ("<>").(Î…ŒÉşÿÿÿÿ
+g	java:S117²"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ôÍ½í
+p
+java:S2293Ù"YReplace the type specification in this constructor call with the diamond operator ("<>").(›÷Ú
+d
+java:S1192æ"HDefine a constant instead of duplicating this literal "Enviar" 26 times.(ó™ôÚûÿÿÿÿ
+_
+java:S3252Z"IUse static access with "javax.swing.WindowConstants" for "EXIT_ON_CLOSE".(¢¡´
+l	java:S117¥"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¶×¢€üÿÿÿÿ
+D
+java:S3398‡"(Move this method into "ClienteListener".(ˆşß½ÿÿÿÿÿ
+<
+java:S3398Ğ"%Move this method into "MainListener".(¼îè¼
+l	java:S117î"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¶×¢€üÿÿÿÿ
+g	java:S117¹"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ì«¿
+d	java:S100˜"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ŒÜæĞ
+i	java:S100ı"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ú—åûÿÿÿÿ
+^
+java:S1192É"HDefine a constant instead of duplicating this literal "DÃ­a: " 10 times.(ØîòJ
+?
+java:S3398œ"(Move this method into "ClienteListener".(áÅ
+^
+java:S3252V"CUse static access with "java.awt.Component" for "CENTER_ALIGNMENT".(ãĞâŒûÿÿÿÿ
+d	java:S100œ"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(áÅ
+u
+java:S2293Œ
+"YReplace the type specification in this constructor call with the diamond operator ("<>").(Î…ŒÉşÿÿÿÿ
+g	java:S117ª"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(„ó²ü
+ò
+java:S1192ß"ÓDefine a constant instead of duplicating this literal "                                                                                                                                                                                                                                                                                 " 29 times.(•†¬½8¹¾Óƒ¦.
+l	java:S117È"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¶×¢€üÿÿÿÿ
+f
+java:S1192±"ODefine a constant instead of duplicating this literal "Fecha de fin: " 3 times.(¢ûº¶
+A
+java:S3398ı"*Move this method into "EscuchadorLlamada".(¶„Æá
+¶
+java:S1192Ş"’Define a constant instead of duplicating this literal "                                                                                                                                                                                                                " 29 times.(·ßî†øÿÿÿÿ8¹¾Óƒ¦.
+_
+java:S3252€"CUse static access with "java.awt.Component" for "CENTER_ALIGNMENT".(ãĞâŒûÿÿÿÿ
+?
+java:S3398ò"(Move this method into "ClienteListener".(¦ğö¨
+F
+java:S3398Ö"*Move this method into "EscuchadorFactura".(£¸úûÿÿÿÿ
+:
+java:S1148ö"#Use a logger to log this exception.(äÍ°
+D
+java:S3398ø"(Move this method into "ClienteListener".(¯Æ©‚üÿÿÿÿ
+n
+java:S1192Ÿ"RDefine a constant instead of duplicating this literal "Fecha de inicio: " 3 times.(ó¬Ê´ıÿÿÿÿ
+d	java:S100­"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(’Ş´Ø
+C
+java:S1604>"(Make this anonymous inner class a lambda(Ô¶µÿşÿÿÿÿ
+c	java:S100`"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¹£àí
+g	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ì«¿
+F
+java:S3398ÿ"*Move this method into "EscuchadorFactura".(Ùòû¨şÿÿÿÿ
+c
+java:S1192¡"GDefine a constant instead of duplicating this literal "NIF: " 11 times.(§à¡¾ıÿÿÿÿ
+i
+java:S1192È"RDefine a constant instead of duplicating this literal "Mes(numÃ©rico): " 10 times.(ÁÜùò
+g	java:S117—"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ì«¿
