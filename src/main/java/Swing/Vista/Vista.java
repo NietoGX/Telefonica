@@ -5,8 +5,11 @@ import InterfazSwing.Modelo.Modelo;
 import InterfazSwing.Vista.ImplementacionVista;
 import Swing.Controlador.ControladorEmpresa;
 import Swing.Modelo.EmpresaTelefonia;
+import datos.Cliente;
+import datos.Direccion;
 import datos.Factura;
-import excepciones.ExcepcionClienteNoEncontrado;
+import excepciones.*;
+import tarifa.TarifaBasica;
 
 import javax.swing.*;
 import javax.swing.border.Border;
@@ -14,6 +17,11 @@ import javax.swing.event.MenuListener;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Collection;
 
 public class Vista {
     private EmpresaTelefonia modelo;
@@ -34,6 +42,9 @@ public class Vista {
     JTextField correoT = null;
     JTextField fecha1 = null;
     JTextField fecha2 = null;
+    JTextField poblacionT=null;
+    JTextField provinciaT=null;
+
 
     JTextField añoT = null;
     JTextField tarifaT = null;
@@ -153,7 +164,8 @@ public class Vista {
         mostrarFactura.add(nif);
         mostrarFactura.add(nifT);
         JButton submit= new JButton("Enviar");
-
+        EscuchadorMostrarFacturas listener= new EscuchadorMostrarFacturas();
+        submit.addActionListener(listener);
         mostrarFactura.add(submit);
 
         mid.add(mostrarFactura);
@@ -177,7 +189,6 @@ public class Vista {
         mostrarFactura.add(nifT);
         mostrarFactura.add(codFac);
         mostrarFactura.add(codFacT);
-
         JButton submit= new JButton("Enviar");
 
         mostrarFactura.add(submit);
@@ -407,13 +418,15 @@ public class Vista {
         JPanel labels= new JPanel();
         labels.setLayout(new GridLayout(0,1,1,15));
         JPanel text= new JPanel();
-        text.setLayout(new GridLayout(0,1,1,5));
+        text.setLayout(new GridLayout(0,1,1,6));
         text.setBackground(Color.DARK_GRAY);
 
         JLabel nombre= new JLabel("Nombre: ");
         JLabel apellido= new JLabel("Apellido: ");
         JLabel nif= new JLabel("NIF: ");
-        JLabel dir= new JLabel("Dirección: ");
+        JLabel poblacion= new JLabel("Población: ");
+        JLabel provincia= new JLabel("Provincia: ");
+        JLabel codPos= new JLabel("Código postal: ");
         JLabel email= new JLabel("E-mail: ");
         JLabel fecha= new JLabel("Fecha: ");
         JLabel tarifa= new JLabel("Tarifa: ");
@@ -421,7 +434,9 @@ public class Vista {
         labels.add(nombre);
         labels.add(apellido);
         labels.add(nif);
-        labels.add(dir);
+        labels.add(poblacion);
+        labels.add(provincia);
+        labels.add(codPos);
         labels.add(email);
         labels.add(fecha);
         labels.add(tarifa);
@@ -429,7 +444,9 @@ public class Vista {
         nombreT= new JTextField(30);
         apellidoT= new JTextField(30);
         nifT= new JTextField(30);
-        dirT= new JTextField(30);
+        poblacionT= new JTextField(30);
+        provinciaT= new JTextField(30);
+        codPosT= new JTextField(30);
         correoT= new JTextField(30);
         fecha1= new JTextField(30);
         JRadioButton r1= new JRadioButton("Básica");
@@ -450,7 +467,9 @@ public class Vista {
         text.add(nombreT);
         text.add(apellidoT);
         text.add(nifT);
-        text.add(dirT);
+        text.add(poblacionT);
+        text.add(provinciaT);
+        text.add(codPosT);
         text.add(correoT);
         text.add(fecha1);
         text.add(radios);
@@ -459,8 +478,9 @@ public class Vista {
 
         altaCliente.add(labels,BorderLayout.WEST);
         altaCliente.add(text,BorderLayout.CENTER);
-
+        EscuchadorCreaParticular listener= new EscuchadorCreaParticular();
         JButton submit= new JButton("Enviar");
+        submit.addActionListener(listener);
         altaCliente.add(submit,BorderLayout.SOUTH);
         altaCliente.setBackground(Color.DARK_GRAY);
 
@@ -482,26 +502,32 @@ public class Vista {
         JPanel labels= new JPanel();
         labels.setLayout(new GridLayout(0,1,1,15));
         JPanel text= new JPanel();
-        text.setLayout(new GridLayout(0,1,1,5));
+        text.setLayout(new GridLayout(0,1,1,6));
         text.setBackground(Color.DARK_GRAY);
 
         JLabel nombre= new JLabel("Nombre: ");
         JLabel nif= new JLabel("NIF: ");
-        JLabel dir= new JLabel("Dirección: ");
+        JLabel poblacion= new JLabel("Población: ");
+        JLabel provincia= new JLabel("Provincia: ");
+        JLabel codPos= new JLabel("Código postal: ");
         JLabel email= new JLabel("E-mail: ");
         JLabel fecha= new JLabel("Fecha: ");
         JLabel tarifa= new JLabel("Tarifa: ");
 
         labels.add(nombre);
         labels.add(nif);
-        labels.add(dir);
+        labels.add(poblacion);
+        labels.add(provincia);
+        labels.add(codPos);
         labels.add(email);
         labels.add(fecha);
         labels.add(tarifa);
 
         nombreT= new JTextField(30);
         nifT= new JTextField(30);
-        dirT= new JTextField(30);
+        poblacionT= new JTextField(30);
+        provinciaT= new JTextField(30);
+        codPosT= new JTextField(30);
         correoT= new JTextField(30);
         fecha1= new JTextField(30);
         JRadioButton r1= new JRadioButton("Básica");
@@ -521,15 +547,18 @@ public class Vista {
 
         text.add(nombreT);
         text.add(nifT);
-        text.add(dirT);
+        text.add(poblacionT);
+        text.add(provinciaT);
+        text.add(codPosT);
         text.add(correoT);
         text.add(fecha1);
         text.add(radios);
 
         altaEmpresa.add(labels,BorderLayout.WEST);
         altaEmpresa.add(text,BorderLayout.CENTER);
-
+        EscuchadorCreaEmpresa listener= new EscuchadorCreaEmpresa();
         JButton submit= new JButton("Enviar");
+        submit.addActionListener(listener);
         altaEmpresa.add(submit,BorderLayout.SOUTH);
         altaEmpresa.setBackground(Color.DARK_GRAY);
 
@@ -553,7 +582,9 @@ public class Vista {
          nifT= new JTextField(30);
         borrarCliente.add(nif);
         borrarCliente.add(nifT);
+        EscuchadorBorrarCliente listener= new EscuchadorBorrarCliente();
         JButton submit= new JButton("Enviar");
+        submit.addActionListener(listener);
         borrarCliente.add(submit);
 
         mid.add(borrarCliente);
@@ -599,7 +630,7 @@ public class Vista {
         EscuchadorMostrarCliente listener = new EscuchadorMostrarCliente();
 
         JButton boton = new JButton("Enviar");
-        boton.setBackground(Color.gray);
+
         boton.addActionListener(listener);
         mostrarCLiente.add(boton);
 
@@ -608,6 +639,15 @@ public class Vista {
         mid.updateUI();
     }
     private void VistaMostrarClientes(){
+        res.removeAll();
+        mid.removeAll();
+        EscuchadorMostrarClientes listener= new EscuchadorMostrarClientes();
+        JButton boton= new JButton("Mostrar listado clientes");
+        boton.addActionListener(listener);
+        mid.add(boton);
+        res.updateUI();
+        mid.updateUI();
+
 
     }
     private void VistaMostrarClientesEntreFechas() {
@@ -734,11 +774,12 @@ public class Vista {
                 res.removeAll();
                 try{
                     System.out.println("PRUEBAAAAAAAAAAA");
-                    JLabel cliente= new JLabel((Icon) controlador.mostrarDatos(nifT.getText().toString()));
+//                    JLabel cliente= new JLabel(controlador.mostrarDatos(nifT.getText().toString()).toString());
                     System.out.println(nifT.getText());
-                    JScrollPane scroll = new JScrollPane(cliente);
-                    scroll.setPreferredSize(new Dimension(1080, 100));
-                    res.add(scroll);
+//                    JScrollPane scroll = new JScrollPane(cliente);
+//                    scroll.setPreferredSize(new Dimension(1080, 100));
+//                    res.add(scroll);
+                    JOptionPane.showMessageDialog(ventana, controlador.mostrarDatos(nifT.getText().toString()).toString());
 //                    panelButton.add(res);
                     res.updateUI();
 //                    panelButton.updateUI();
@@ -784,20 +825,153 @@ public class Vista {
                 res.removeAll();
                 try{
                     System.out.println("Mostrando facturas");
-                    Factura fac= controlador.emitirFacturas(nifT.getText().toString());
                     System.out.println(nifT.getText());
-                    JOptionPane.showMessageDialog(ventana, "Factura: "+ fac.getCodFactura()+" creada con éxito.");
+                    Collection<Factura> facs= controlador.mostrarFacturas(nifT.getText().toString());
 
+                    DefaultListModel<String> datos = new DefaultListModel<>();
+                    for (Factura factura : facs) {
+                        datos.addElement(factura.toString());
+                    }
+                    JList<String> facturas = new JList<String>(datos);
+                    JScrollPane scroll = new JScrollPane(facturas);
+                    scroll.setPreferredSize(new Dimension(1080, 400));
+                    facturas.setVisibleRowCount(30);
+                    mid.add(scroll);
+                    scroll.updateUI();
+                    mid.updateUI();
 //                    panelButton.add(res);
                     res.updateUI();
 //                    panelButton.updateUI();
-                } catch (ExcepcionClienteNoEncontrado excepcionClienteNoEncontrado) {
+                } catch (ExcepcionListaFacturasVacia excepcionClienteNoEncontrado) {
                     JOptionPane.showMessageDialog(ventana, "No se ha podido crear la factura debido a que no se ha encontrado el cliente");
 
                 }
             }
         }
     }
+    public class EscuchadorMostrarFactura implements ActionListener{
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            JButton boton = (JButton) e.getSource();
+            String texto = boton.getText();
+            if (texto.equals("Enviar")) {
+                res.removeAll();
+                try{
+                    System.out.println("Mostrando factura");
+                    System.out.println(nifT.getText());
+                    Factura fac= (Factura) controlador.mostrarFactura(nifT.getText(),Integer.parseInt(codFacT.getText().toString()));
+                    JLabel facLabel= new JLabel(fac.toString());
+                    mid.add(facLabel);
+                    mid.updateUI();
+                } catch (ExcepcionListaFacturasVacia excepcionClienteNoEncontrado) {
+                    JOptionPane.showMessageDialog(ventana, "No se ha podido encontrar la factura");
+
+                }
+            }
+        }
+    }
+    public class EscuchadorCreaParticular implements ActionListener{
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            submit = (JButton) e.getSource();
+            String texto = submit.getText();
+            if (texto.equals("Enviar")) {
+                mid.removeAll();
+                try {
+                    Direccion dir = new Direccion(provinciaT.getText().toString(), poblacionT.getText().toString(), codPosT.getText().toString());
+                    DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
+                    Calendar cal = Calendar.getInstance();
+                    cal.setTime(df.parse(fecha1.getText().toString()));
+                    if(controlador.creaParticular(nombreT.getText().toString(), apellidoT.getText().toString(), nifT.getText().toString(), dir,correoT.getText().toString(),cal,new TarifaBasica()))
+                        JOptionPane.showMessageDialog(ventana, "Usuario creado con éxito!");
+                    else{
+                        JOptionPane.showMessageDialog(ventana, "Ha habido un error al crear el usuario");
+                    }
+                } catch (ParseException ex) {
+                    JOptionPane.showMessageDialog(ventana, "La fecha introducida es incorrecta");
+                } catch (ExcepcionClienteYaRegistrado excepcionClienteYaRegistrado) {
+                    JOptionPane.showMessageDialog(ventana, "Cliente ya registrado");
+                }
+            }
+        }
+    }
+
+    public class EscuchadorCreaEmpresa implements ActionListener{
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            submit = (JButton) e.getSource();
+            String texto = submit.getText();
+            if (texto.equals("Enviar")) {
+                mid.removeAll();
+                try {
+                    Direccion dir = new Direccion(provinciaT.getText().toString(), poblacionT.getText().toString(), codPosT.getText().toString());
+                    DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
+                    Calendar cal = Calendar.getInstance();
+                    cal.setTime(df.parse(fecha1.getText().toString()));
+                    if(controlador.creaEmpresa(nombreT.getText().toString(), nifT.getText().toString(), dir,correoT.getText().toString(),cal,new TarifaBasica()))
+                        JOptionPane.showMessageDialog(ventana, "Usuario creado con éxito!");
+                    else{
+                        JOptionPane.showMessageDialog(ventana, "Ha habido un error al crear el usuario");
+                    }
+                } catch (ParseException ex) {
+                    JOptionPane.showMessageDialog(ventana, "La fecha introducida es incorrecta");
+                } catch (ExcepcionClienteYaRegistrado excepcionClienteYaRegistrado) {
+                    JOptionPane.showMessageDialog(ventana, "Cliente ya registrado");
+                }
+            }
+        }
+    }
+    public class EscuchadorBorrarCliente implements ActionListener{
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            submit = (JButton) e.getSource();
+            String texto = submit.getText();
+            if (texto.equals("Enviar")) {
+                mid.removeAll();
+                try {
+                    if(controlador.borrarCliente(nifT.getText().toString()))
+                        JOptionPane.showMessageDialog(ventana, "Cliente borrado con éxito");
+
+                } catch (ExcepcionClienteNoEncontrado excepcionClienteNoEncontrado) {
+                    JOptionPane.showMessageDialog(ventana, "Cliente no encontrado");
+                }
+            }
+        }
+    }
+
+    public class EscuchadorMostrarClientes implements ActionListener {
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            submit = (JButton) e.getSource();
+            String texto = submit.getText();
+            if (texto.equals("Mostrar listado clientes")) {
+                mid.removeAll();
+                try {
+                    Collection<Cliente> col = controlador.mostrarListaClientes();
+                    DefaultListModel<String> datos = new DefaultListModel<>();
+                    for (Cliente cliente : col) {
+                        datos.addElement(cliente.toString());
+                    }
+                    JList<String> clientes = new JList<String>(datos);
+                    JScrollPane scroll = new JScrollPane(clientes);
+                    scroll.setPreferredSize(new Dimension(1080, 100));
+                    clientes.setVisibleRowCount(30);
+                    res.add(scroll);
+
+                    scroll.updateUI();
+                    res.updateUI();
 
 
+                } catch (ExcepcionListaClientesVacia excepcionListaClientesVacia) {
+                    JOptionPane.showMessageDialog(ventana, "Lista de clientes vacía");
+                }
+            }
+        }
+
+    }
 }
