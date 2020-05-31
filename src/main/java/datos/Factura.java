@@ -47,7 +47,7 @@ public class Factura implements TieneFecha, Serializable {
 		return "Factura Cliente: \n" +
 				"- Codigo de Factura: " + codFactura + "\n" +
 				"- Tarifa: " + tarifa.toString() + "\n" +
-				"- Emision: " + fechaEmision.toString() + "\n" +
+				"- Emision: " + fechaEmision.getTime().toString() + "\n" +
 				"- Importe: " + importe + "\n";
 	}
 }

@@ -633,7 +633,7 @@ public class Vista {
 
         JLabel nif= new JLabel("NIF: ");
         nifT= new JTextField(12);
-        JLabel codFac= new JLabel("NIF: ");
+        JLabel codFac= new JLabel("Código de la factura: ");
         codFacT= new JTextField(12);
 
 
@@ -672,8 +672,9 @@ public class Vista {
         mostrarFacturasEntreFechas.add(fecha1);
         mostrarFacturasEntreFechas.add(fechaFin);
         mostrarFacturasEntreFechas.add(fecha2);
-
+        EscuchadorListarFacturasEntreFechas listener= new EscuchadorListarFacturasEntreFechas();
         JButton submit= new JButton("Enviar");
+        submit.addActionListener(listener);
         mostrarFacturasEntreFechas.add(submit);
 
         mid.add(mostrarFacturasEntreFechas);
@@ -1191,12 +1192,11 @@ public class Vista {
             if (texto.equals("Enviar")) {
                 res.removeAll();
                 try{
-                    
+
                     System.out.println("Mostrando factura");
                     System.out.println(nifT.getText());
                     Factura fac= controlador.mostrarFactura(nifT.getText(),Integer.parseInt(codFacT.getText().toString()));
-                    JLabel facLabel= new JLabel(fac.toString());
-                    res.add(facLabel);
+                    JOptionPane.showMessageDialog(ventana, fac.toString());
                     res.updateUI();
                     mid.updateUI();
                 } catch (ExcepcionListaFacturasVacia excepcionClienteNoEncontrado) {

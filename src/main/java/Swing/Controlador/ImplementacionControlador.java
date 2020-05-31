@@ -16,11 +16,11 @@ public class ImplementacionControlador implements ControladorEmpresa {
         this.modelo = modelo;
     }
     public boolean creaParticular(String nombre, String apellidos, String nif, Direccion dir, String correo, Calendar fecha, Tarifa tarifa) throws ExcepcionClienteYaRegistrado {
-        Cliente cliente= FactoriaCliente.particular(nombre,apellidos,nif, dir,correo,Calendar.getInstance(), tarifa);
+        Cliente cliente= FactoriaCliente.particular(nombre,apellidos,nif, dir,correo,fecha, tarifa);
         return modelo.addCliente(cliente);
     }
     public boolean creaEmpresa(String nombre, String nif, Direccion dir, String correo, Calendar fecha, Tarifa tarifa) throws ExcepcionClienteYaRegistrado {
-        Cliente cliente= FactoriaCliente.empresa(nombre,nif, dir,correo,Calendar.getInstance(), tarifa);
+        Cliente cliente= FactoriaCliente.empresa(nombre,nif, dir,correo,fecha, tarifa);
         return modelo.addCliente(cliente);
     }
 
@@ -37,7 +37,7 @@ public class ImplementacionControlador implements ControladorEmpresa {
     public Collection<Cliente> mostrarListaClientes() throws ExcepcionListaClientesVacia {
         return modelo.mostrarListaClientes();
     }
-    public boolean darDeAltaLlamada(String nif, String numDestino, Calendar fecha, int duracion) {
+    public boolean darDeAltaLlamada(String nif, String numDestino, Calendar fecha, int duracion) throws ExcepcionClienteNoEncontrado {
         return modelo.darDeAltaLlamada(nif,numDestino,fecha,duracion);
     }
     public List<Llamada> listarLlamadas(String nif) throws ExcepcionListaLlamadasVacia {
@@ -46,7 +46,7 @@ public class ImplementacionControlador implements ControladorEmpresa {
     public Factura emitirFacturas(String nif) throws ExcepcionClienteNoEncontrado {
         return modelo.emitirFacturas(nif);
     }
-    public List<Factura> mostrarFactura(String nif, int codFactura)  throws ExcepcionListaFacturasVacia {
+    public Factura mostrarFactura(String nif, int codFactura)  throws ExcepcionListaFacturasVacia {
         return modelo.mostrarFactura(nif,codFactura);
     }
     public List<Factura> mostrarFacturas(String nif) throws ExcepcionListaFacturasVacia {

@@ -81,11 +81,13 @@ public class EmpresaTelefonia implements Serializable, EmpresaTelefoniaInterfaz 
         return clientes.values();
     }
 
-    public boolean darDeAltaLlamada(String nif, String numDestino, Calendar fecha, int duracion) {
+    public boolean darDeAltaLlamada(String nif, String numDestino, Calendar fecha, int duracion) throws ExcepcionClienteNoEncontrado {
         Llamada llamada = new Llamada(numDestino, fecha, duracion);
         System.out.println(llamada.toString());
         llamadas.add(llamada);
-
+        if(clientes.get(nif)==null){
+            throw new ExcepcionClienteNoEncontrado();
+        }
         if(llamadasPorNif.get(nif) == null){
             llamadasPorNif.put(nif, llamadas);
             return true;
@@ -110,11 +112,12 @@ public class EmpresaTelefonia implements Serializable, EmpresaTelefoniaInterfaz 
         Calendar fechaMin = Calendar.getInstance();
         Calendar fechaMax = Calendar.getInstance();
         Cliente cliente = clientes.get(nif);
-        Tarifa tarifa = cliente.getTarifa();
+
 
         double importe = 0;
 
         if (llamadas != null) {
+            Tarifa tarifa = cliente.getTarifa();
             for (Llamada llamada : llamadas) {
                 importe += tarifa.costeMenor(llamada, tarifa);
                 Calendar fecha = llamada.getFecha();
@@ -139,13 +142,18 @@ public class EmpresaTelefonia implements Serializable, EmpresaTelefoniaInterfaz 
             throw new ExcepcionClienteNoEncontrado();
     }
 
-    public List<Factura> mostrarFactura(String nif, int codFactura)  throws ExcepcionListaFacturasVacia {
+    public Factura mostrarFactura(String nif, int codFactura)  throws ExcepcionListaFacturasVacia {
         List<Factura> facturas = facturasPorNif.get(nif);
 
-        if (facturas != null)
-            return facturas;
-         else
+        for(Factura f:facturas){
+            if (f.getCodFactura()==codFactura){
+                return f;
+            }
+        }
+        if (facturas == null)
             throw new ExcepcionListaFacturasVacia();
+        return null;
+
     }
 
     public List<Factura> mostrarFacturas(String nif) throws ExcepcionListaFacturasVacia {

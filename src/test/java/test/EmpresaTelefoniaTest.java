@@ -73,7 +73,7 @@ class EmpresaTelefoniaTest {
     @Before
     @Test
     @Order(2)
-    void altaLlamadas() {
+    void altaLlamadas() throws ExcepcionClienteNoEncontrado {
         for (String nif : nifs) {
             int size = empresaTelefonia.llamadas.size();
             String numDestino = Integer.toString(random.nextInt(999999999));
