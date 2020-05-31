@@ -12,6 +12,7 @@ public class TarifaBasica implements Tarifa {
     public double getPrecioTarifa() {
         return PRECIO;
     }
+
     @Override
     public Tarifa getTarifa() {
         return null;

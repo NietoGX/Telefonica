@@ -2,7 +2,7 @@ package test;
 
 import datos.*;
 import es.uji.www.GeneradorDatosINE;
-import Swing.Modelo.EmpresaTelefonia;
+import Swing.Modelo.ModeloEmpresa;
 import org.junit.jupiter.api.*;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
@@ -21,7 +21,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class FactoriaTest {
     private static GeneradorDatosINE generador = new GeneradorDatosINE();
     private Random random = new Random();
-    private static EmpresaTelefonia empresaTelefonia;
+    private static ModeloEmpresa modeloEmpresa;
     private Set<Cliente> clientes = new HashSet<>();
 
     static Stream<Arguments> data() {
@@ -36,7 +36,7 @@ public class FactoriaTest {
     @BeforeAll
     @Test
     static void inicializacion() {
-        empresaTelefonia = new EmpresaTelefonia();
+        modeloEmpresa = new ModeloEmpresa();
     }
 
     @ParameterizedTest

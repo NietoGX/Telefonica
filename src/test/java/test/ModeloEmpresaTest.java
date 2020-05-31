@@ -1,6 +1,6 @@
 package test;
 
-import Swing.Modelo.EmpresaTelefonia;
+import Swing.Modelo.ModeloEmpresa;
 import datos.*;
 import excepciones.ExcepcionClienteNoEncontrado;
 import es.uji.www.GeneradorDatosINE;
@@ -23,9 +23,9 @@ import static org.hamcrest.Matchers.instanceOf;
 import static org.junit.jupiter.api.Assertions.*;
 
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
-class EmpresaTelefoniaTest {
+class ModeloEmpresaTest {
     private static GeneradorDatosINE generador = new GeneradorDatosINE();
-    private static EmpresaTelefonia empresaTelefonia;
+    private static ModeloEmpresa modeloEmpresa;
     private static Set<String> nifs = new HashSet<>();
     private Random random = new Random();
 
@@ -41,7 +41,7 @@ class EmpresaTelefoniaTest {
     @BeforeAll
     @Test
     static void inicializacion() {
-        empresaTelefonia = new EmpresaTelefonia();
+        modeloEmpresa = new ModeloEmpresa();
     }
 
     @ParameterizedTest
@@ -58,13 +58,13 @@ class EmpresaTelefoniaTest {
         if (random.nextBoolean()) {
             Particular particular = new Particular(nombre, apellido, nif, direccion, correo, Calendar.getInstance(), tarifa);
             assertThat(particular, instanceOf(Cliente.class));
-            empresaTelefonia.clientes.put(particular.getNif(), particular);
-            assertEquals(empresaTelefonia.clientes.get(particular.getNif()), particular);
+            modeloEmpresa.clientes.put(particular.getNif(), particular);
+            assertEquals(modeloEmpresa.clientes.get(particular.getNif()), particular);
         } else {
             Empresa empresa = new Empresa(nombre, nif, direccion, correo, Calendar.getInstance(), tarifa);
             assertThat(empresa, instanceOf(Cliente.class));
-            empresaTelefonia.clientes.put(empresa.getNif(), empresa);
-            assertEquals(empresaTelefonia.clientes.get(empresa.getNif()), empresa);
+            modeloEmpresa.clientes.put(empresa.getNif(), empresa);
+            assertEquals(modeloEmpresa.clientes.get(empresa.getNif()), empresa);
         }
 
         nifs.add(nif);
@@ -75,10 +75,10 @@ class EmpresaTelefoniaTest {
     @Order(2)
     void altaLlamadas() throws ExcepcionClienteNoEncontrado {
         for (String nif : nifs) {
-            int size = empresaTelefonia.llamadas.size();
+            int size = modeloEmpresa.llamadas.size();
             String numDestino = Integer.toString(random.nextInt(999999999));
-            empresaTelefonia.darDeAltaLlamada(nif, numDestino, Calendar.getInstance(), random.nextInt(3600));
-            assertEquals(empresaTelefonia.llamadas.size(), size+1);
+            modeloEmpresa.darDeAltaLlamada(nif, numDestino, Calendar.getInstance(), random.nextInt(3600));
+            assertEquals(modeloEmpresa.llamadas.size(), size+1);
         }
     }
 
@@ -86,9 +86,9 @@ class EmpresaTelefoniaTest {
     @Order(3)
     void emitirFacturas() throws ExcepcionClienteNoEncontrado {
         for (String nif : nifs) {
-            int size = empresaTelefonia.facturas.size(); size++;
-            empresaTelefonia.emitirFacturas(nif);
-            assertEquals(empresaTelefonia.facturas.size(), size);
+            int size = modeloEmpresa.facturas.size(); size++;
+            modeloEmpresa.emitirFacturas(nif);
+            assertEquals(modeloEmpresa.facturas.size(), size);
         }
     }
 
@@ -96,9 +96,9 @@ class EmpresaTelefoniaTest {
     @Order(4)
     void borrarCliente() throws ExcepcionClienteNoEncontrado {
         for (String nif : nifs) {
-            assertThat(empresaTelefonia.clientes.get(nif), instanceOf(Cliente.class));
-            empresaTelefonia.borrarCliente(nif);
-            assertNull(empresaTelefonia.clientes.get(nif));
+            assertThat(modeloEmpresa.clientes.get(nif), instanceOf(Cliente.class));
+            modeloEmpresa.borrarCliente(nif);
+            assertNull(modeloEmpresa.clientes.get(nif));
         }
     }
 }

@@ -1,6 +1,6 @@
 package Swing.Controlador;
 
-import Swing.Modelo.EmpresaTelefonia;
+import Swing.Modelo.ModeloEmpresa;
 import datos.Cliente;
 import datos.Direccion;
 import datos.Factura;
@@ -13,7 +13,7 @@ import java.util.Collection;
 import java.util.List;
 
 public interface ControladorEmpresa {
-     void setModelo(EmpresaTelefonia modelo);
+     void setModelo(ModeloEmpresa modelo);
 
      boolean creaParticular(String nombre, String apellidos, String nif, Direccion dir, String correo, Calendar fecha, Tarifa tarifa) throws ExcepcionClienteYaRegistrado;
      boolean creaEmpresa(String nombre, String nif, Direccion dir, String correo, Calendar fecha, Tarifa tarifa) throws ExcepcionClienteYaRegistrado;

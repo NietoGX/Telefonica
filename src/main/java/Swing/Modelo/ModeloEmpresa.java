@@ -1,6 +1,5 @@
 package Swing.Modelo;
 
-import datos.Empresa;
 import excepciones.*;
 import fecha.FechaGenerico;
 import datos.Cliente;
@@ -12,28 +11,33 @@ import tarifa.Tarifa;
 import java.io.*;
 import java.util.*;
 
-public class EmpresaTelefonia implements Serializable, EmpresaTelefoniaInterfaz {
+public class ModeloEmpresa implements Serializable, ImplementacionModelo {
     public HashMap<String, Cliente> clientes;
     public HashMap<String, List<Llamada>> llamadasPorNif;
     public List<Llamada> llamadas;
     public HashMap<String, List<Factura>> facturasPorNif;
     public List<Factura> facturas;
 
-    public EmpresaTelefonia() {
+    public ModeloEmpresa() {
         clientes = new HashMap<>();
         llamadas = new ArrayList<>();
         llamadasPorNif = new HashMap<>();
         facturas = new ArrayList<>();
         facturasPorNif = new HashMap<>();
     }
-    public boolean addCliente(Cliente cliente) throws ExcepcionClienteYaRegistrado {
+
+    public boolean añadirCliente(Cliente cliente) throws ExcepcionClienteYaRegistrado {
         String nif= cliente.getNif();
-        if(this.clientes.containsKey(nif)){
+
+        if (clientes.containsKey(nif)) {
             throw new ExcepcionClienteYaRegistrado();
         }
-        this.clientes.put(nif,cliente);
+
+        clientes.put(nif,cliente);
+
         return true;
     }
+
     public boolean borrarCliente(String nif) throws ExcepcionClienteNoEncontrado {
         if (clientes.remove(nif) == null)
             throw new ExcepcionClienteNoEncontrado();
@@ -44,9 +48,6 @@ public class EmpresaTelefonia implements Serializable, EmpresaTelefoniaInterfaz 
         Cliente cliente = clientes.get(nif);
         if (cliente == null)
             throw new ExcepcionClienteNoEncontrado();
-
-
-
 
         Tarifa tarifa = FactoriaTarifa.basica();
 
@@ -69,6 +70,7 @@ public class EmpresaTelefonia implements Serializable, EmpresaTelefoniaInterfaz 
 
     public Cliente mostrarDatos(String nif) throws ExcepcionClienteNoEncontrado {
         Cliente cliente = clientes.get(nif);
+
         if (cliente == null)
             throw new ExcepcionClienteNoEncontrado();
 
@@ -83,23 +85,23 @@ public class EmpresaTelefonia implements Serializable, EmpresaTelefoniaInterfaz 
 
     public boolean darDeAltaLlamada(String nif, String numDestino, Calendar fecha, int duracion) throws ExcepcionClienteNoEncontrado {
         Llamada llamada = new Llamada(numDestino, fecha, duracion);
-        System.out.println(llamada.toString());
         llamadas.add(llamada);
+
         if(clientes.get(nif)==null){
             throw new ExcepcionClienteNoEncontrado();
         }
+
         if(llamadasPorNif.get(nif) == null){
             llamadasPorNif.put(nif, llamadas);
-            return true;
+        } else {
+            llamadasPorNif.replace(nif, llamadas);
         }
 
-        llamadasPorNif.replace(nif, llamadas);
         return true;
     }
 
     public List<Llamada> listarLlamadas(String nif) throws ExcepcionListaLlamadasVacia {
         List<Llamada> llamadas = llamadasPorNif.get(nif);
-        String devuelvo = "Llamadas Realizadas :";
 
         if (llamadas != null) {
             return llamadas;
@@ -112,7 +114,6 @@ public class EmpresaTelefonia implements Serializable, EmpresaTelefoniaInterfaz 
         Calendar fechaMin = Calendar.getInstance();
         Calendar fechaMax = Calendar.getInstance();
         Cliente cliente = clientes.get(nif);
-
 
         double importe = 0;
 
@@ -137,6 +138,7 @@ public class EmpresaTelefonia implements Serializable, EmpresaTelefoniaInterfaz 
                 facturasPorNif.put(nif, facturas);
             else
                 facturasPorNif.replace(nif, facturas);
+
             return factura;
         } else
             throw new ExcepcionClienteNoEncontrado();
@@ -145,15 +147,15 @@ public class EmpresaTelefonia implements Serializable, EmpresaTelefoniaInterfaz 
     public Factura mostrarFactura(String nif, int codFactura)  throws ExcepcionListaFacturasVacia {
         List<Factura> facturas = facturasPorNif.get(nif);
 
-        for(Factura f:facturas){
-            if (f.getCodFactura()==codFactura){
-                return f;
+        if (facturas != null) {
+            for(Factura f: facturas){
+                if (f.getCodFactura()==codFactura)
+                    return f;
             }
-        }
-        if (facturas == null)
+        } else
             throw new ExcepcionListaFacturasVacia();
-        return null;
 
+        return null;
     }
 
     public List<Factura> mostrarFacturas(String nif) throws ExcepcionListaFacturasVacia {
@@ -169,10 +171,10 @@ public class EmpresaTelefonia implements Serializable, EmpresaTelefoniaInterfaz 
         if (fechaInicio.after(fechaFin))
             throw new ExcepcionFechas();
 
-        if (!this.facturasPorNif.containsKey(nif))
+        if (!facturasPorNif.containsKey(nif))
             throw new ExcepcionClienteNoEncontrado();
 
-        Collection<Factura> facturas = this.facturasPorNif.get(nif);
+        Collection<Factura> facturas = facturasPorNif.get(nif);
         facturas = FechaGenerico.getConjuntoPorFecha(facturas, fechaInicio, fechaFin);
 
         if (facturas.isEmpty())
@@ -185,11 +187,12 @@ public class EmpresaTelefonia implements Serializable, EmpresaTelefoniaInterfaz 
         if (fechaInicio.after(fechaFin))
             throw new ExcepcionFechas();
 
-        if (!this.llamadasPorNif.containsKey(nif))
+        if (!llamadasPorNif.containsKey(nif))
             throw new ExcepcionClienteNoEncontrado();
 
-        Collection<Llamada> llamadas = this.llamadasPorNif.get(nif);
+        Collection<Llamada> llamadas = llamadasPorNif.get(nif);
         llamadas = FechaGenerico.getConjuntoPorFecha(llamadas, fechaInicio, fechaFin);
+
         if (llamadas.isEmpty())
             throw new ExcepcionListaLlamadasVacia();
 
@@ -205,6 +208,7 @@ public class EmpresaTelefonia implements Serializable, EmpresaTelefoniaInterfaz 
 
         if (clientes.isEmpty())
             throw new ExcepcionListaClientesVacia();
+
         return clientes;
     }
 

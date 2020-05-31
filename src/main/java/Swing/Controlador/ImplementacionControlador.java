@@ -1,6 +1,6 @@
 package Swing.Controlador;
 
-import Swing.Modelo.EmpresaTelefonia;
+import Swing.Modelo.ModeloEmpresa;
 import datos.*;
 import excepciones.*;
 import tarifa.Tarifa;
@@ -10,18 +10,18 @@ import java.util.Collection;
 import java.util.List;
 
 public class ImplementacionControlador implements ControladorEmpresa {
-    private EmpresaTelefonia modelo;
+    private ModeloEmpresa modelo;
 
-    public void setModelo(EmpresaTelefonia modelo) {
+    public void setModelo(ModeloEmpresa modelo) {
         this.modelo = modelo;
     }
     public boolean creaParticular(String nombre, String apellidos, String nif, Direccion dir, String correo, Calendar fecha, Tarifa tarifa) throws ExcepcionClienteYaRegistrado {
         Cliente cliente= FactoriaCliente.particular(nombre,apellidos,nif, dir,correo,fecha, tarifa);
-        return modelo.addCliente(cliente);
+        return modelo.añadirCliente(cliente);
     }
     public boolean creaEmpresa(String nombre, String nif, Direccion dir, String correo, Calendar fecha, Tarifa tarifa) throws ExcepcionClienteYaRegistrado {
         Cliente cliente= FactoriaCliente.empresa(nombre,nif, dir,correo,fecha, tarifa);
-        return modelo.addCliente(cliente);
+        return modelo.añadirCliente(cliente);
     }
 
     public boolean borrarCliente(String nif) throws ExcepcionClienteNoEncontrado {

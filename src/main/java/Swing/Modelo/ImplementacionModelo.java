@@ -9,8 +9,8 @@ import java.util.Calendar;
 import java.util.Collection;
 import java.util.List;
 
-public interface EmpresaTelefoniaInterfaz {
-    boolean addCliente(Cliente cliente) throws ExcepcionClienteYaRegistrado;
+public interface ImplementacionModelo {
+    boolean añadirCliente(Cliente cliente) throws ExcepcionClienteYaRegistrado;
     boolean borrarCliente(String nif) throws ExcepcionClienteNoEncontrado;
     boolean cambiarTarifa(String nif, int tar) throws ExcepcionClienteNoEncontrado;
     Cliente mostrarDatos(String nif) throws ExcepcionClienteNoEncontrado;

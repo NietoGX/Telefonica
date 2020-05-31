@@ -1,10 +1,7 @@
 package Swing.Vista;
 
-import InterfazSwing.Controlador.Controlador;
-import InterfazSwing.Modelo.Modelo;
-import InterfazSwing.Vista.ImplementacionVista;
 import Swing.Controlador.ControladorEmpresa;
-import Swing.Modelo.EmpresaTelefonia;
+import Swing.Modelo.ModeloEmpresa;
 import datos.Cliente;
 import datos.Direccion;
 import datos.Factura;
@@ -12,11 +9,8 @@ import datos.Llamada;
 import excepciones.*;
 import tarifa.FactoriaTarifa;
 import tarifa.Tarifa;
-import tarifa.TarifaBasica;
 
 import javax.swing.*;
-import javax.swing.border.Border;
-import javax.swing.event.MenuListener;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -28,7 +22,7 @@ import java.util.Collection;
 import java.util.List;
 
 public class Vista {
-    private EmpresaTelefonia modelo;
+    private ModeloEmpresa modelo;
     private ControladorEmpresa controlador;
     private JFrame ventana;
     Container contenedor;
@@ -66,7 +60,7 @@ public class Vista {
 
 
 
-    public void setModelo(EmpresaTelefonia modelo) {
+    public void setModelo(ModeloEmpresa modelo) {
         this.modelo = modelo;
     }
 

@@ -1,17 +1,12 @@
 package Swing;
 
-import InterfazSwing.Controlador.Controlador;
-import InterfazSwing.Controlador.ImplementaciónControlador;
-import InterfazSwing.Modelo.ImplementacionModelo;
-import InterfazSwing.Vista.ImplementacionVista;
-import Swing.Controlador.ControladorEmpresa;
 import Swing.Controlador.ImplementacionControlador;
-import Swing.Modelo.EmpresaTelefonia;
+import Swing.Modelo.ModeloEmpresa;
 import Swing.Vista.Vista;
 
 public class Main {
     public static void main(String args[]) {
-        EmpresaTelefonia modelo= new EmpresaTelefonia();
+        ModeloEmpresa modelo= new ModeloEmpresa();
 
         Vista vista = new Vista();
         ImplementacionControlador controlador = new ImplementacionControlador();

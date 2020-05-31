@@ -1,7 +1,7 @@
 package test;
 
 import datos.*;
-import Swing.Modelo.EmpresaTelefonia;
+import Swing.Modelo.ModeloEmpresa;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import tarifa.*;
@@ -14,13 +14,13 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class DecoradorTarifaTest {
-    private static EmpresaTelefonia empresaTelefonia;
+    private static ModeloEmpresa modeloEmpresa;
     private Random random = new Random();
 
     @BeforeAll
     @Test
     static void inicializacion() {
-        empresaTelefonia = new EmpresaTelefonia();
+        modeloEmpresa = new ModeloEmpresa();
     }
 
     @Test
