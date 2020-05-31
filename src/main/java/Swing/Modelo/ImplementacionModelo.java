@@ -147,7 +147,7 @@ public class ImplementacionModelo implements Serializable, ModeloEmpresa {
             throw new ExcepcionClienteNoEncontrado();
     }
 
-    public Factura mostrarFactura(String nif, int codFactura)  throws ExcepcionListaFacturasVacia {
+    public Factura mostrarFactura(String nif, int codFactura) throws ExcepcionListaFacturasVacia, ExcepcionFacturaNoEncontrada {
         List<Factura> facturas = facturasPorNif.get(nif);
 
         if (facturas != null) {
@@ -155,10 +155,9 @@ public class ImplementacionModelo implements Serializable, ModeloEmpresa {
                 if (f.getCodFactura()==codFactura)
                     return f;
             }
+            throw new ExcepcionFacturaNoEncontrada();
         } else
             throw new ExcepcionListaFacturasVacia();
-
-        return null;
     }
 
     public List<Factura> mostrarFacturas(String nif) throws ExcepcionListaFacturasVacia {

@@ -4,6 +4,9 @@ import Swing.Modelo.ImplementacionModelo;
 import datos.*;
 import excepciones.ExcepcionClienteNoEncontrado;
 import es.uji.www.GeneradorDatosINE;
+import excepciones.ExcepcionFacturaNoEncontrada;
+import excepciones.ExcepcionListaFacturasVacia;
+import excepciones.ExcepcionListaLlamadasVacia;
 import org.junit.Before;
 import org.junit.jupiter.api.*;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -23,7 +26,7 @@ import static org.hamcrest.Matchers.instanceOf;
 import static org.junit.jupiter.api.Assertions.*;
 
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
-class EmpresaTelefoniaTest {
+class EmpresaTelefoniaExcepcionTest {
     private static GeneradorDatosINE generador = new GeneradorDatosINE();
     private static ImplementacionModelo modeloEmpresa;
     private static Set<String> nifs = new HashSet<>();
@@ -70,9 +73,23 @@ class EmpresaTelefoniaTest {
         nifs.add(nif);
     }
 
-    @Before
     @Test
     @Order(2)
+    void excepcionListaLlamadasVacia() {
+        for (String nif : nifs) {
+            Exception exception = assertThrows(ExcepcionListaLlamadasVacia.class, () -> {
+                modeloEmpresa.listarLlamadas(nif);
+            });
+
+            String mensajeEsperado = "Lista llamadas vacia";
+            String mensaje = exception.getMessage();
+
+            assertTrue(mensaje.contains(mensajeEsperado));
+        }
+    }
+
+    @Test
+    @Order(3)
     void altaLlamadas() throws ExcepcionClienteNoEncontrado {
         for (String nif : nifs) {
             int size = modeloEmpresa.llamadas.size();
@@ -83,7 +100,22 @@ class EmpresaTelefoniaTest {
     }
 
     @Test
-    @Order(3)
+    @Order(4)
+    void excepcionListaFacturasVacia() {
+        for (String nif : nifs) {
+            Exception exception = assertThrows(ExcepcionListaFacturasVacia.class, () -> {
+                modeloEmpresa.mostrarFactura(nif, 0);
+            });
+
+            String mensajeEsperado = "Lista facturas vacia";
+            String mensaje = exception.getMessage();
+
+            assertTrue(mensaje.contains(mensajeEsperado));
+        }
+    }
+
+    @Test
+    @Order(5)
     void emitirFacturas() throws ExcepcionClienteNoEncontrado {
         for (String nif : nifs) {
             int size = modeloEmpresa.facturas.size(); size++;
@@ -93,12 +125,43 @@ class EmpresaTelefoniaTest {
     }
 
     @Test
-    @Order(4)
+    @Order(6)
+    void excepcionFacturaNoEncontrada() {
+        for (String nif : nifs) {
+            Exception exception = assertThrows(ExcepcionFacturaNoEncontrada.class, () -> {
+                modeloEmpresa.mostrarFactura(nif, 100);
+            });
+
+            String mensajeEsperado = "Factura no encontrada";
+            String mensaje = exception.getMessage();
+
+            assertTrue(mensaje.contains(mensajeEsperado));
+        }
+    }
+
+    @Test
+    @Order(7)
     void borrarCliente() throws ExcepcionClienteNoEncontrado {
         for (String nif : nifs) {
             assertThat(modeloEmpresa.clientes.get(nif), instanceOf(Cliente.class));
             modeloEmpresa.borrarCliente(nif);
             assertNull(modeloEmpresa.clientes.get(nif));
+        }
+    }
+
+
+    @Test
+    @Order(8)
+    void excepcionClienteNoEncontrado() {
+        for (String nif : nifs) {
+            Exception exception = assertThrows(ExcepcionClienteNoEncontrado.class, () -> {
+                modeloEmpresa.borrarCliente(nif);
+            });
+
+            String mensajeEsperado = "Cliente no encontrado";
+            String mensaje = exception.getMessage();
+
+            assertTrue(mensaje.contains(mensajeEsperado));
         }
     }
 }

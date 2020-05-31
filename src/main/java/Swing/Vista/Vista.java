@@ -824,42 +824,33 @@ public class Vista {
                     if (r1.isSelected()) {
                         if(controlador.creaParticular(nombreT.getText().toString(), apellidoT.getText().toString(), nifT.getText().toString(), dir,correoT.getText().toString(),cal, FactoriaTarifa.basica()))
                             JOptionPane.showMessageDialog(ventana, "Usuario creado con éxito!");
-                        else{
+                        else {
                             VistaDarDeAltaParticular();
                             JOptionPane.showMessageDialog(ventana, "Ha habido un error al crear el usuario");
                         }
-                        System.out.println("BASICA");
                     }
 
                     else if (r2.isSelected()) {
 
                         if(controlador.creaParticular(nombreT.getText().toString(), apellidoT.getText().toString(), nifT.getText().toString(), dir,correoT.getText().toString(),cal, FactoriaTarifa.tarde(FactoriaTarifa.basica()))){
                             JOptionPane.showMessageDialog(ventana, "Usuario creado con éxito!");
-                        }
-
-
-                        else{
+                        } else{
                             VistaDarDeAltaParticular();
                             JOptionPane.showMessageDialog(ventana, "Ha habido un error al crear el usuario");
                         }
-                        System.out.println("BASICA");
                     }
+
                     else if (r3.isSelected()){
                         if(controlador.creaParticular(nombreT.getText().toString(), apellidoT.getText().toString(), nifT.getText().toString(), dir,correoT.getText().toString(),cal, FactoriaTarifa.domingo(FactoriaTarifa.basica()))){
                             JOptionPane.showMessageDialog(ventana, "Usuario creado con éxito!");
-                        }
-
-
-                        else{
+                        } else {
                             VistaDarDeAltaParticular();
                             JOptionPane.showMessageDialog(ventana, "Ha habido un error al crear el usuario");
                         }
-                        System.out.println("DOMINGO");
-                    }else{
+                    } else {
                         VistaDarDeAltaParticular();
                         JOptionPane.showMessageDialog(ventana, "Selecciona un tipo de tarifa");
                     }
-
 
                 } catch (ParseException ex) {
                     VistaDarDeAltaParticular();
@@ -1193,7 +1184,7 @@ public class Vista {
                     JOptionPane.showMessageDialog(ventana, fac.toString());
                     res.updateUI();
                     mid.updateUI();
-                } catch (ExcepcionListaFacturasVacia excepcionClienteNoEncontrado) {
+                } catch (ExcepcionListaFacturasVacia | ExcepcionFacturaNoEncontrada excepcionClienteNoEncontrado) {
                     VistaMostrarFactura();
                     JOptionPane.showMessageDialog(ventana, "No se ha podido encontrar la factura");
 

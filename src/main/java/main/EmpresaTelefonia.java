@@ -317,7 +317,7 @@ public class EmpresaTelefonia implements Serializable {
 			System.out.println("Datos de la factura: ");
 			System.out.println(factura.toString());
 			System.out.println("Datos mostrados con éxito");
-		} catch (ExcepcionListaFacturasVacia ex) {
+		} catch (ExcepcionListaFacturasVacia | ExcepcionFacturaNoEncontrada ex) {
 			System.out.println(ex.getMessage());
 		}
 	}

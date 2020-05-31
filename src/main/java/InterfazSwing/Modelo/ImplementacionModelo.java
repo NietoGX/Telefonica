@@ -10,7 +10,7 @@ import tarifa.Tarifa;
 import java.io.*;
 import java.util.*;
 
-public class  ImplementacionModelo implements Modelo{
+public class  ImplementacionModelo implements Modelo {
     public HashMap<String, Cliente> clientes;
     public HashMap<String, List<Llamada>> llamadasPorNif;
     public List<Llamada> llamadas;
@@ -127,9 +127,9 @@ public class  ImplementacionModelo implements Modelo{
                 duracionLlamadas += llamada.getDuracion();
         }
 
-        double importe = (this.clientes.get(nif).getTarifa().getPrecioTarifa() / 60) * duracionLlamadas;
+        //double importe = (this.clientes.get(nif).getTarifa().getPrecioCorrecto() / 60) * duracionLlamadas;
 
-        Factura factura = new Factura(codigo, tarifa, fechaEmision,1, importe);
+        //Factura factura = new Factura(codigo, tarifa, fechaEmision,1, importe);
 
         if (this.facturasPorNif.get(nif) == null)
             this.facturasPorNif.put(nif, new ArrayList<Factura>());
@@ -137,7 +137,7 @@ public class  ImplementacionModelo implements Modelo{
 //        this.facturas.get(nif).add(factura);
 //        this.facturasPorCodigo.put(codigo, factura);
 
-        return factura;
+        return null;
 
     }
 
