@@ -116,6 +116,10 @@ public class Vista {
         ventana.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         ventana.setVisible(true);
 
+        Runtime.getRuntime().addShutdownHook(new Thread(() -> {
+            modelo.guardarDatos();
+        }));
+
 
     }
     public void VistaClientes() {

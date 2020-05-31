@@ -14,7 +14,7 @@ public class Main {
         controlador.setModelo(modelo);
         vista.setModelo(modelo);
         vista.setControlador(controlador);
-//        modelo.cargarDatos();
+        modelo.cargarDatos();
         vista.iniciaGUI();
     }
 }
