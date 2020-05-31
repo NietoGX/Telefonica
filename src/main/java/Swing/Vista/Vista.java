@@ -56,10 +56,6 @@ public class Vista {
     JRadioButton r3= null;
 
 
-
-
-
-
     public void setModelo(ImplementacionModelo modelo) {
         this.modelo = modelo;
     }
@@ -69,8 +65,6 @@ public class Vista {
     }
 
     public Vista() {
-
-
     }
 
     public void iniciaGUI() {
@@ -81,6 +75,7 @@ public class Vista {
             }
         });
     }
+
     //MENUS-------------------------------------------------------------------------------------------------------
     public void MenuPrincipal(){
 //        JLabel ESPACIO= new JLabel(" /0                                                               ");
@@ -855,9 +850,9 @@ public class Vista {
                 } catch (ParseException ex) {
                     VistaDarDeAltaParticular();
                     JOptionPane.showMessageDialog(ventana, "La fecha introducida es incorrecta");
-                } catch (ExcepcionClienteYaRegistrado excepcionClienteYaRegistrado) {
+                } catch (ExcepcionClienteYaRegistrado ex) {
                     VistaDarDeAltaParticular();
-                    JOptionPane.showMessageDialog(ventana, "Cliente ya registrado");
+                    JOptionPane.showMessageDialog(ventana, ex.getMessage());
                 }
             }
         }
@@ -915,14 +910,15 @@ public class Vista {
                     VistaDarDeAltaEmpresa();
                     JOptionPane.showMessageDialog(ventana, "La fecha introducida es incorrecta");
 
-                } catch (ExcepcionClienteYaRegistrado excepcionClienteYaRegistrado) {
+                } catch (ExcepcionClienteYaRegistrado ex) {
                     VistaDarDeAltaEmpresa();
-                    JOptionPane.showMessageDialog(ventana, "Cliente ya registrado");
+                    JOptionPane.showMessageDialog(ventana, ex.getMessage());
                 }
             }
         }
     }
     public class EscuchadorBorrarCliente implements ActionListener{
+
 
         @Override
         public void actionPerformed(ActionEvent e) {
@@ -934,9 +930,9 @@ public class Vista {
                     if(controlador.borrarCliente(nifT.getText().toString()))
                         JOptionPane.showMessageDialog(ventana, "Cliente borrado con éxito");
 
-                } catch (ExcepcionClienteNoEncontrado excepcionClienteNoEncontrado) {
+                } catch (ExcepcionClienteNoEncontrado ex) {
                     VistaBorrarCliente();
-                    JOptionPane.showMessageDialog(ventana, "Cliente no encontrado");
+                    JOptionPane.showMessageDialog(ventana, ex.getMessage());
                 }
             }
         }
@@ -971,9 +967,9 @@ public class Vista {
                        JOptionPane.showMessageDialog(ventana, "Selecciona un tipo de tarifa");
                    }
 
-                } catch (ExcepcionClienteNoEncontrado excepcionClienteNoEncontrado) {
+                } catch (ExcepcionClienteNoEncontrado ex) {
                     VistaCambiarTarifa();
-                    JOptionPane.showMessageDialog(ventana, "Cliente no encontrado");
+                    JOptionPane.showMessageDialog(ventana, ex.getMessage());
 
                 }
             }
@@ -1003,9 +999,9 @@ public class Vista {
                     res.updateUI();
 
 
-                } catch (ExcepcionListaClientesVacia excepcionListaClientesVacia) {
+                } catch (ExcepcionListaClientesVacia ex) {
                     VistaMostrarClientes();
-                    JOptionPane.showMessageDialog(ventana, "Lista de clientes vacía");
+                    JOptionPane.showMessageDialog(ventana, ex.getMessage());
                 }
             }
         }
@@ -1028,9 +1024,9 @@ public class Vista {
 //                    panelButton.add(res);
                     res.updateUI();
 //                    panelButton.updateUI();
-                } catch (ExcepcionClienteNoEncontrado excepcionClienteNoEncontrado) {
+                } catch (ExcepcionClienteNoEncontrado ex) {
                     VistaMostrarCliente();
-                    JOptionPane.showMessageDialog(ventana, "Cliente no encontrado");
+                    JOptionPane.showMessageDialog(ventana, ex.getMessage());
 
                 }
             }
@@ -1069,12 +1065,9 @@ public class Vista {
 
 
 
-                } catch (ExcepcionListaClientesVacia excepcionListaClientesVacia) {
+                } catch (ExcepcionListaClientesVacia | ExcepcionFechas ex) {
                     VistaMostrarClientesEntreFechas();
-                    JOptionPane.showMessageDialog(ventana, "Lista de clientes vacía");
-                } catch (ExcepcionFechas excepcionFechas) {
-                    VistaMostrarClientesEntreFechas();
-                    JOptionPane.showMessageDialog(ventana, "Las fechas no són válidas");
+                    JOptionPane.showMessageDialog(ventana, ex.getMessage());
                 } catch (ParseException ex) {
                     VistaMostrarClientesEntreFechas();
                     JOptionPane.showMessageDialog(ventana, "Error al transformar las fechas");
@@ -1125,9 +1118,9 @@ public class Vista {
 //                    panelButton.add(res);
                     res.updateUI();
 //                    panelButton.updateUI();
-                } catch (ExcepcionClienteNoEncontrado excepcionClienteNoEncontrado) {
+                } catch (ExcepcionClienteNoEncontrado ex) {
                     VistaEmitirFactura();
-                    JOptionPane.showMessageDialog(ventana, "No se ha podido crear la factura debido a que no se ha encontrado el cliente");
+                    JOptionPane.showMessageDialog(ventana, ex.getMessage());
 
                 }
             }
@@ -1161,9 +1154,9 @@ public class Vista {
 //                    panelButton.add(res);
                     res.updateUI();
 //                    panelButton.updateUI();
-                } catch (ExcepcionListaFacturasVacia excepcionClienteNoEncontrado) {
+                } catch (ExcepcionListaFacturasVacia ex) {
                     VistaMostrarFacturas();
-                    JOptionPane.showMessageDialog(ventana, "No se ha podido crear la factura debido a que no se ha encontrado el cliente");
+                    JOptionPane.showMessageDialog(ventana, ex.getMessage());
                 }
             }
         }
@@ -1184,9 +1177,9 @@ public class Vista {
                     JOptionPane.showMessageDialog(ventana, fac.toString());
                     res.updateUI();
                     mid.updateUI();
-                } catch (ExcepcionListaFacturasVacia | ExcepcionFacturaNoEncontrada excepcionClienteNoEncontrado) {
+                } catch (ExcepcionListaFacturasVacia | ExcepcionFacturaNoEncontrada ex) {
                     VistaMostrarFactura();
-                    JOptionPane.showMessageDialog(ventana, "No se ha podido encontrar la factura");
+                    JOptionPane.showMessageDialog(ventana, ex.getMessage());
 
                 }
             }
@@ -1221,18 +1214,12 @@ public class Vista {
                     scroll.updateUI();
                     res.updateUI();
 
-                } catch (ExcepcionFechas excepcionFechas) {
+                } catch (ExcepcionFechas | ExcepcionClienteNoEncontrado | ExcepcionListaFacturasVacia ex) {
                     VistaMostrarFacturasEntreFechas();
-                    JOptionPane.showMessageDialog(ventana, "Las fechas no són válidas");
+                    JOptionPane.showMessageDialog(ventana, ex.getMessage());
                 } catch (ParseException ex) {
                     VistaMostrarFacturasEntreFechas();
                     JOptionPane.showMessageDialog(ventana, "Error al transformar las fechas");
-                } catch (ExcepcionClienteNoEncontrado excepcionClienteNoEncontrado) {
-                    VistaMostrarFacturasEntreFechas();
-                    JOptionPane.showMessageDialog(ventana, "Cliente no encontrado");
-                } catch (ExcepcionListaFacturasVacia excepcionListaFacturasVacia) {
-                    VistaMostrarFacturasEntreFechas();
-                    JOptionPane.showMessageDialog(ventana, "Lista de Facturas vacía");
                 }
             }
         }
@@ -1276,12 +1263,12 @@ public class Vista {
                     JOptionPane.showMessageDialog(ventana, "Llamada creada con éxito");
 
 
-                } catch (ParseException excepcionListaClientesVacia) {
+                } catch (ParseException ex) {
                     VistaDarDeAltaLLamada();
                     JOptionPane.showMessageDialog(ventana, "Error al convertir fecha");
-                } catch (ExcepcionClienteNoEncontrado excepcionClienteNoEncontrado) {
+                } catch (ExcepcionClienteNoEncontrado ex) {
                     VistaDarDeAltaLLamada();
-                    JOptionPane.showMessageDialog(ventana, "No existe el cliente");
+                    JOptionPane.showMessageDialog(ventana, ex.getMessage());
                 }
             }
 
@@ -1310,12 +1297,9 @@ public class Vista {
                     scroll.updateUI();
                     res.updateUI();
 
-
-
-
-                } catch (ExcepcionListaLlamadasVacia excepcionListaClientesVacia) {
+                } catch (ExcepcionListaLlamadasVacia ex) {
                     VistaMostrarLlamadas();
-                    JOptionPane.showMessageDialog(ventana, "Este cliente no contiene ninguna llamada");
+                    JOptionPane.showMessageDialog(ventana, ex.getMessage());
                 }
             }
         }
@@ -1352,21 +1336,12 @@ public class Vista {
                     res.updateUI();
 
 
-
-
-
-                } catch (ExcepcionFechas excepcionFechas) {
+                } catch (ExcepcionFechas | ExcepcionListaLlamadasVacia | ExcepcionClienteNoEncontrado ex) {
                     VistaMostrarLlamadasEntreFechas();
-                    JOptionPane.showMessageDialog(ventana, "Las fechas no són válidas");
+                    JOptionPane.showMessageDialog(ventana, ex.getMessage());
                 } catch (ParseException ex) {
                     VistaMostrarLlamadasEntreFechas();
                     JOptionPane.showMessageDialog(ventana, "Error al transformar las fechas");
-                } catch (ExcepcionListaLlamadasVacia excepcionListaLlamadasVacia) {
-                    VistaMostrarLlamadasEntreFechas();
-                    JOptionPane.showMessageDialog(ventana, "No existen llamadas");
-                } catch (ExcepcionClienteNoEncontrado excepcionClienteNoEncontrado) {
-                    VistaMostrarLlamadasEntreFechas();
-                    JOptionPane.showMessageDialog(ventana, "Cliente no encontrado");
                 }
             }
         }
