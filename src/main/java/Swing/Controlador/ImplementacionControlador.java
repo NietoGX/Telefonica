@@ -1,6 +1,6 @@
 package Swing.Controlador;
 
-import Swing.Modelo.ModeloEmpresa;
+import Swing.Modelo.ImplementacionModelo;
 import datos.*;
 import excepciones.*;
 import tarifa.Tarifa;
@@ -10,9 +10,9 @@ import java.util.Collection;
 import java.util.List;
 
 public class ImplementacionControlador implements ControladorEmpresa {
-    private ModeloEmpresa modelo;
+    private ImplementacionModelo modelo;
 
-    public void setModelo(ModeloEmpresa modelo) {
+    public void setModelo(ImplementacionModelo modelo) {
         this.modelo = modelo;
     }
     public boolean creaParticular(String nombre, String apellidos, String nif, Direccion dir, String correo, Calendar fecha, Tarifa tarifa) throws ExcepcionClienteYaRegistrado {

@@ -4,27 +4,22 @@ import datos.Llamada;
 
 import java.util.Calendar;
 
-public class TarifaBasica implements Tarifa {
+public class TarifaBasica extends Tarifa {
 
     private static final double PRECIO = 0.15;
 
     @Override
-    public double getPrecioTarifa() {
-        return PRECIO;
+    public double getPrecioCorrecto(Llamada llamada, Tarifa tarifa) {
+        return tarifa.coste(llamada);
     }
 
     @Override
-    public Tarifa getTarifa() {
-        return null;
-    }
-
-    @Override
-    public double costeMenor(Llamada llamada, Tarifa tarifaActual) {
-        return tarifaActual.calcularCoste(llamada);
-    }
-
-    @Override
-    public double calcularCoste(Llamada llamada) {
+    public double coste(Llamada llamada) {
         return llamada.getDuracion() * PRECIO;
+    }
+
+    @Override
+    public String toString() {
+        return "Tarifa Basica: " + PRECIO + "€";
     }
 }

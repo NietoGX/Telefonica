@@ -2,9 +2,19 @@ package tarifa;
 
 import datos.Llamada;
 
-public interface Tarifa {
-	double getPrecioTarifa();
-	Tarifa getTarifa();
-	double costeMenor(Llamada llamada, Tarifa tarifaActual);
-	double calcularCoste(Llamada llamada);
+public abstract class Tarifa {
+	private double precio;
+
+	public Tarifa (double precio) {
+		this.precio = precio;
+	}
+
+	protected Tarifa() {
+	}
+
+	public abstract double getPrecioCorrecto(Llamada llamada, Tarifa tarifa);
+
+	public abstract double coste(Llamada llamada);
+
+	public abstract String toString();
 }

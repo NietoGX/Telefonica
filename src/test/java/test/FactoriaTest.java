@@ -2,7 +2,7 @@ package test;
 
 import datos.*;
 import es.uji.www.GeneradorDatosINE;
-import Swing.Modelo.ModeloEmpresa;
+import Swing.Modelo.ImplementacionModelo;
 import org.junit.jupiter.api.*;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
@@ -21,7 +21,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class FactoriaTest {
     private static GeneradorDatosINE generador = new GeneradorDatosINE();
     private Random random = new Random();
-    private static ModeloEmpresa modeloEmpresa;
+    private static ImplementacionModelo modeloEmpresa;
     private Set<Cliente> clientes = new HashSet<>();
 
     static Stream<Arguments> data() {
@@ -36,7 +36,7 @@ public class FactoriaTest {
     @BeforeAll
     @Test
     static void inicializacion() {
-        modeloEmpresa = new ModeloEmpresa();
+        modeloEmpresa = new ImplementacionModelo();
     }
 
     @ParameterizedTest
@@ -75,14 +75,14 @@ public class FactoriaTest {
     public void tarifas() {
         Tarifa tarifa = FactoriaTarifa.basica();
         TarifaBasica tarifaBasica = new TarifaBasica();
-        assertEquals(tarifa.getTarifa(), tarifaBasica.getTarifa());
+        assertEquals(tarifa.toString(), tarifaBasica.toString());
 
         tarifa = FactoriaTarifa.tarde(tarifa);
         TarifaTarde tarifaTarde = new TarifaTarde(tarifa);
-        assertEquals(tarifa.getTarifa(), tarifaTarde.getTarifa());
+        assertEquals(tarifa.toString(), tarifaTarde.toString());
 
         tarifa = FactoriaTarifa.domingo(tarifa);
         TarifaDomingo tarifaDomingo = new TarifaDomingo(tarifa);
-        assertEquals(tarifa.getTarifa(), tarifaDomingo.getTarifa());
+        assertEquals(tarifa.toString(), tarifaDomingo.toString());
     }
 }

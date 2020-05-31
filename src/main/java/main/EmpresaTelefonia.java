@@ -1,7 +1,6 @@
 package main;
 
 import Swing.Modelo.ImplementacionModelo;
-import Swing.Modelo.ModeloEmpresa;
 import datos.*;
 import excepciones.*;
 import tarifa.FactoriaTarifa;
@@ -19,7 +18,7 @@ import java.util.Scanner;
 
 public class EmpresaTelefonia implements Serializable {
 
-	private static ModeloEmpresa empresa;
+	private static ImplementacionModelo empresa;
 	private static Scanner teclado;
 	private static final long serialVersionUID = 965898124655689844L;
 	private static final long TAMFECHA = 16;
@@ -28,7 +27,7 @@ public class EmpresaTelefonia implements Serializable {
 	public static void main(String[] args) {
 		teclado = new Scanner(System.in);
 
-		empresa = new ModeloEmpresa();
+		empresa = new ImplementacionModelo();
 		empresa.cargarDatos();
 
 		while (menu() != 13);

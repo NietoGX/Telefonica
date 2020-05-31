@@ -1,6 +1,6 @@
 package test;
 
-import Swing.Modelo.ModeloEmpresa;
+import Swing.Modelo.ImplementacionModelo;
 import datos.*;
 import excepciones.ExcepcionClienteNoEncontrado;
 import es.uji.www.GeneradorDatosINE;
@@ -23,9 +23,9 @@ import static org.hamcrest.Matchers.instanceOf;
 import static org.junit.jupiter.api.Assertions.*;
 
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
-class ModeloEmpresaTest {
+class EmpresaTelefoniaTest {
     private static GeneradorDatosINE generador = new GeneradorDatosINE();
-    private static ModeloEmpresa modeloEmpresa;
+    private static ImplementacionModelo modeloEmpresa;
     private static Set<String> nifs = new HashSet<>();
     private Random random = new Random();
 
@@ -41,7 +41,7 @@ class ModeloEmpresaTest {
     @BeforeAll
     @Test
     static void inicializacion() {
-        modeloEmpresa = new ModeloEmpresa();
+        modeloEmpresa = new ImplementacionModelo();
     }
 
     @ParameterizedTest

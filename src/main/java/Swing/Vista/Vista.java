@@ -1,7 +1,7 @@
 package Swing.Vista;
 
 import Swing.Controlador.ControladorEmpresa;
-import Swing.Modelo.ModeloEmpresa;
+import Swing.Modelo.ImplementacionModelo;
 import datos.Cliente;
 import datos.Direccion;
 import datos.Factura;
@@ -22,7 +22,7 @@ import java.util.Collection;
 import java.util.List;
 
 public class Vista {
-    private ModeloEmpresa modelo;
+    private ImplementacionModelo modelo;
     private ControladorEmpresa controlador;
     private JFrame ventana;
     Container contenedor;
@@ -60,7 +60,7 @@ public class Vista {
 
 
 
-    public void setModelo(ModeloEmpresa modelo) {
+    public void setModelo(ImplementacionModelo modelo) {
         this.modelo = modelo;
     }
 
