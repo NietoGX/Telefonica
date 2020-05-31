@@ -30,7 +30,8 @@ public class Llamada implements TieneFecha, Serializable {
 	public String toString() {
 		return "Llamada:\n" +
 				"- Telefono: " + telefono + "\n" +
-				"- Fecha: "+ fecha.getTime().toString() + "\n" +
+				"- Fecha: "+ fecha.get(Calendar.DAY_OF_MONTH) + "/" + (fecha.get(Calendar.MONTH)+1) + "/" + fecha.get(Calendar.YEAR)
+					       + " " +  fecha.get(Calendar.HOUR_OF_DAY) + ":" + fecha.get(Calendar.MINUTE) + "\n" +
 				"- Duracion: " + duracion + "segundos"+"\n";
 	}
 }

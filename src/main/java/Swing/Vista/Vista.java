@@ -55,6 +55,7 @@ public class Vista {
     JRadioButton r2= null;
     JRadioButton r3= null;
 
+    String patternFecha = "dd/MM/yyyy HH:mm";
 
     public void setModelo(ImplementacionModelo modelo) {
         this.modelo = modelo;
@@ -817,9 +818,9 @@ public class Vista {
                 mid.removeAll();
                 try {
                     Direccion dir = new Direccion(provinciaT.getText().toString(), poblacionT.getText().toString(), codPosT.getText().toString());
-                    DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
+                    DateFormat df = new SimpleDateFormat(patternFecha);
                     Calendar cal = Calendar.getInstance();
-                    cal.setTime(df.parse(fecha1.getText()));
+                    cal.setTime(df.parse(fecha1.getText().toString()));
                     if (r1.isSelected()) {
                         if(controlador.creaParticular(nombreT.getText().toString(), apellidoT.getText().toString(), nifT.getText().toString(), dir,correoT.getText().toString(),cal, FactoriaTarifa.basica()))
                             JOptionPane.showMessageDialog(ventana, "Usuario creado con éxito!");
@@ -871,7 +872,7 @@ public class Vista {
                 mid.removeAll();
                 try {
                     Direccion dir = new Direccion(provinciaT.getText().toString(), poblacionT.getText().toString(), codPosT.getText().toString());
-                    DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
+                    DateFormat df = new SimpleDateFormat(patternFecha);
                     Calendar cal = Calendar.getInstance();
                     cal.setTime(df.parse(fecha1.getText()));
                     if (r1.isSelected()) {
@@ -1046,7 +1047,7 @@ public class Vista {
             if (texto.equals("Enviar")) {
                 mid.removeAll();
                 try {
-                    DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
+                    DateFormat df = new SimpleDateFormat(patternFecha);
                     Calendar cal = Calendar.getInstance();
                     cal.setTime(df.parse(fecha1.getText().toString()));
                     Calendar cal2 = Calendar.getInstance();
@@ -1198,7 +1199,7 @@ public class Vista {
             if (texto.equals("Enviar")) {
                 mid.removeAll();
                 try {
-                    DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
+                    DateFormat df = new SimpleDateFormat(patternFecha);
                     Calendar cal = Calendar.getInstance();
                     cal.setTime(df.parse(fecha1.getText().toString()));
                     Calendar cal2 = Calendar.getInstance();
@@ -1260,7 +1261,7 @@ public class Vista {
             if (texto.equals("Enviar")) {
                 mid.removeAll();
                 try {
-                    DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
+                    DateFormat df = new SimpleDateFormat(patternFecha);
                     Calendar cal = Calendar.getInstance();
                     cal.setTime(df.parse(fecha1.getText().toString()));
                     controlador.darDeAltaLlamada(nifT.getText().toString(), telefonoT.getText().toString(), cal, Integer.parseInt(durT.getText().toString()));
@@ -1319,7 +1320,7 @@ public class Vista {
             if (texto.equals("Enviar")) {
                 mid.removeAll();
                 try {
-                    DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
+                    DateFormat df = new SimpleDateFormat(patternFecha);
                     Calendar cal = Calendar.getInstance();
                     cal.setTime(df.parse(fecha1.getText().toString()));
                     Calendar cal2 = Calendar.getInstance();
