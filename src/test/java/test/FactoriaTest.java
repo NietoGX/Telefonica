@@ -73,16 +73,27 @@ public class FactoriaTest {
     @Test
     @Order (2)
     public void tarifas() {
+        // Tarifa Basica
         Tarifa tarifa = FactoriaTarifa.basica();
         TarifaBasica tarifaBasica = new TarifaBasica();
         assertEquals(tarifa.toString(), tarifaBasica.toString());
 
+        // Tarifa Tarde
         tarifa = FactoriaTarifa.tarde(tarifa);
-        TarifaTarde tarifaTarde = new TarifaTarde(tarifa);
+        TarifaTarde tarifaTarde = new TarifaTarde(tarifaBasica);
         assertEquals(tarifa.toString(), tarifaTarde.toString());
 
+        // Tarifa Tarde y Domingo
         tarifa = FactoriaTarifa.domingo(tarifa);
-        TarifaDomingo tarifaDomingo = new TarifaDomingo(tarifa);
+        TarifaDomingo tarifaTardeDomingo = new TarifaDomingo(tarifaTarde);
+        assertEquals(tarifa.toString(), tarifaTardeDomingo.toString());
+
+        // Tarifa Domingo
+        tarifa = FactoriaTarifa.basica();
+        tarifa = FactoriaTarifa.domingo(tarifa);
+        TarifaDomingo tarifaDomingo = new TarifaDomingo(tarifaBasica);
         assertEquals(tarifa.toString(), tarifaDomingo.toString());
+
+
     }
 }

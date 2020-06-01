@@ -134,8 +134,8 @@ public class EmpresaTelefonia implements Serializable {
 		String poblacion = teclado.nextLine();
 		System.out.println("Por favor, introduce el correo electrónico");
 		String correo = teclado.nextLine();
-		System.out.println("Por favor, introduce la fecha de alta (dd/MM/yyyy HH:mm)");
-		SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm");
+		System.out.println("Por favor, introduce la fecha de alta (dd/MM/yyyy)");
+		SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
 		Calendar fecha = Calendar.getInstance();
 
 		try {
