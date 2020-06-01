@@ -81,7 +81,6 @@ public class Vista {
 
     //MENUS-------------------------------------------------------------------------------------------------------
     public void MenuPrincipal(){
-//        JLabel ESPACIO= new JLabel(" /0                                                               ");
         ventana= new JFrame("EmpresaTelefónica");
         contenedor=ventana.getContentPane();
         JPanel menu=new JPanel();
@@ -185,7 +184,6 @@ public class Vista {
         submenu.repaint();
         mid.repaint();
         submenu.add(vistaCliente, BorderLayout.WEST);
-//        submenu = new JPanel();
         submenu.setBackground(Color.DARK_GRAY);
         mid.add(submenu, BorderLayout.WEST);
         submenu.updateUI();
@@ -580,7 +578,6 @@ public class Vista {
         mid.removeAll();
         res.removeAll();
         JPanel emitirFactura= new JPanel();
-//        emitirFactura.setAlignmentX(JComponent.CENTER_ALIGNMENT);
         emitirFactura.setLayout(new BoxLayout(emitirFactura,BoxLayout.X_AXIS));
 
         JPanel labels= new JPanel();
@@ -859,14 +856,13 @@ public class Vista {
                         }
                     }else if (r4.isSelected()){
                         if(controlador.creaParticular(nombreT.getText().toString(),apellidoT.getText(), nifT.getText().toString(), dir,correoT.getText().toString(),cal, FactoriaTarifa.domingo(FactoriaTarifa.tarde(FactoriaTarifa.basica())))){
-                            //CAMBIAR TARIFA A NOCHE
                             JOptionPane.showMessageDialog(ventana, "Usuario creado con éxito!");
                         }
                         else{
                             VistaDarDeAltaEmpresa();
                             JOptionPane.showMessageDialog(ventana, "Ha habido un error al crear el usuario");
                         }
-                        System.out.println("DOMINGO");
+
                     } else {
                         VistaDarDeAltaParticular();
                         JOptionPane.showMessageDialog(ventana, "Selecciona un tipo de tarifa");
@@ -902,41 +898,38 @@ public class Vista {
                             JOptionPane.showMessageDialog(ventana, "Ha habido un error al crear el usuario");
                             VistaDarDeAltaEmpresa();
                         }
-                        System.out.println("BASICA");
+
                     }
 
                     else if (r2.isSelected()) {
 
                         if(controlador.creaEmpresa(nombreT.getText().toString(), nifT.getText().toString(), dir,correoT.getText().toString(),cal, FactoriaTarifa.tarde(FactoriaTarifa.basica()))){
-                            //CAMBIAR TARIFA A TARDE
                             JOptionPane.showMessageDialog(ventana, "Usuario creado con éxito!");
                         }
                         else{
                             VistaDarDeAltaEmpresa();
                             JOptionPane.showMessageDialog(ventana, "Ha habido un error al crear el usuario");
                         }
-                        System.out.println("BASICA");
+
                     }
                     else if (r3.isSelected()){
                         if(controlador.creaEmpresa(nombreT.getText().toString(), nifT.getText().toString(), dir,correoT.getText().toString(),cal, FactoriaTarifa.domingo(FactoriaTarifa.basica()))){
-                            //CAMBIAR TARIFA A NOCHE
                             JOptionPane.showMessageDialog(ventana, "Usuario creado con éxito!");
                         }
                         else{
                             VistaDarDeAltaEmpresa();
                             JOptionPane.showMessageDialog(ventana, "Ha habido un error al crear el usuario");
                         }
-                        System.out.println("DOMINGO");
+
                     }else if (r4.isSelected()){
                         if(controlador.creaEmpresa(nombreT.getText().toString(), nifT.getText().toString(), dir,correoT.getText().toString(),cal, FactoriaTarifa.domingo(FactoriaTarifa.tarde(FactoriaTarifa.basica())))){
-                            //CAMBIAR TARIFA A NOCHE
                             JOptionPane.showMessageDialog(ventana, "Usuario creado con éxito!");
                         }
                         else{
                             VistaDarDeAltaEmpresa();
                             JOptionPane.showMessageDialog(ventana, "Ha habido un error al crear el usuario");
                         }
-                        System.out.println("DOMINGO");
+
                     }else{
                         VistaDarDeAltaEmpresa();
                         JOptionPane.showMessageDialog(ventana, "Selecciona un tipo de tarifa");
@@ -1052,16 +1045,8 @@ public class Vista {
             if (texto.equals("Enviar")) {
                 res.removeAll();
                 try{
-                    System.out.println("PRUEBAAAAAAAAAAA");
-//                    JLabel cliente= new JLabel(controlador.mostrarDatos(nifT.getText().toString()).toString());
-                    System.out.println(nifT.getText());
-//                    JScrollPane scroll = new JScrollPane(cliente);
-//                    scroll.setPreferredSize(new Dimension(1080, 100));
-//                    res.add(scroll);
                     JOptionPane.showMessageDialog(ventana, controlador.mostrarDatos(nifT.getText().toString()).toString());
-//                    panelButton.add(res);
                     res.updateUI();
-//                    panelButton.updateUI();
                 } catch (ExcepcionClienteNoEncontrado ex) {
                     VistaMostrarCliente();
                     JOptionPane.showMessageDialog(ventana, ex.getMessage());
@@ -1144,8 +1129,6 @@ public class Vista {
             if (texto.equals("Enviar")) {
                 res.removeAll();
                 try{
-                    System.out.println("Emitiendo factura");
-                    System.out.println(nifT.getText());
                     Factura fac= controlador.emitirFacturas(nifT.getText());
                     if(fac==null){
                         VistaEmitirFactura();
@@ -1153,9 +1136,7 @@ public class Vista {
                     }
                     JOptionPane.showMessageDialog(ventana, "Factura: "+ fac.getCodFactura()+" creada con éxito.");
 
-//                    panelButton.add(res);
                     res.updateUI();
-//                    panelButton.updateUI();
                 } catch (ExcepcionClienteNoEncontrado ex) {
                     VistaEmitirFactura();
                     JOptionPane.showMessageDialog(ventana, ex.getMessage());
@@ -1174,8 +1155,6 @@ public class Vista {
             if (texto.equals("Enviar")) {
                 res.removeAll();
                 try{
-                    System.out.println("Mostrando facturas");
-                    System.out.println(nifT.getText());
                     Collection<Factura> facs= controlador.mostrarFacturas(nifT.getText().toString());
 
                     DefaultListModel<String> datos = new DefaultListModel<>();
@@ -1189,9 +1168,7 @@ public class Vista {
                     mid.add(scroll);
                     scroll.updateUI();
                     mid.updateUI();
-//                    panelButton.add(res);
                     res.updateUI();
-//                    panelButton.updateUI();
                 } catch (ExcepcionListaFacturasVacia ex) {
                     VistaMostrarFacturas();
                     JOptionPane.showMessageDialog(ventana, ex.getMessage());
@@ -1208,9 +1185,6 @@ public class Vista {
             if (texto.equals("Enviar")) {
                 res.removeAll();
                 try{
-
-                    System.out.println("Mostrando factura");
-                    System.out.println(nifT.getText());
                     Factura fac= controlador.mostrarFactura(nifT.getText(),Integer.parseInt(codFacT.getText().toString()));
                     JOptionPane.showMessageDialog(ventana, fac.toString());
                     res.updateUI();
