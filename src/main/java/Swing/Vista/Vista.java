@@ -979,20 +979,20 @@ public class Vista {
                    Cliente cli=controlador.mostrarDatos(nif);
                    Tarifa tar= cli.getTarifa();
                    if(r1.isSelected()){
-                       Tarifa cambio= FactoriaTarifa.basica();
-                       cli.setTarifa(cambio);
+                       controlador.cambiarTarifa(nifT.getText(),0);
+
                        JOptionPane.showMessageDialog(ventana, "Tarifa del cliente: "+cli.getNombre()+" cambiada a básica");
                    }else if (r2.isSelected()){
-                       Tarifa cambio= FactoriaTarifa.tarde(tar);
-                       cli.setTarifa(cambio);
+                       controlador.cambiarTarifa(nifT.getText(),1);
+
                        JOptionPane.showMessageDialog(ventana, "Tarifa del cliente: "+cli.getNombre()+" cambiada a tarde");
                    } else if (r3.isSelected()) {
-                       Tarifa cambio= FactoriaTarifa.domingo(tar);
-                       cli.setTarifa(cambio);
+                       controlador.cambiarTarifa(nifT.getText(),2);
+
                        JOptionPane.showMessageDialog(ventana, "Tarifa del cliente: "+cli.getNombre()+" cambiada a domingo");
                    }else if (r4.isSelected()) {
                        controlador.cambiarTarifa(nifT.getText(),3);
-                       JOptionPane.showMessageDialog(ventana, "Tarifa del cliente: "+cli.getNombre()+" cambiada a domingo");
+                       JOptionPane.showMessageDialog(ventana, "Tarifa del cliente: "+cli.getNombre()+" cambiada a tarde/domingo");
                    }else{
                        VistaCambiarTarifa();
                        JOptionPane.showMessageDialog(ventana, "Selecciona un tipo de tarifa");
