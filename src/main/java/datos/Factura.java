@@ -41,13 +41,12 @@ public class Factura implements TieneFecha, Serializable {
 		return importe;
 	}
 
-	// TODO: Comprobar como se ve
 	@Override
 	public String toString() {
 		return "Factura Cliente: \n" +
 				"- Codigo de Factura: " + codFactura + "\n" +
 				"- Tarifa: " + tarifa.toString() + "\n" +
-				"- Emision: " + fechaEmision.getTime().toString() + "\n" +
+				"- Emision: " + fechaEmision.get(Calendar.DAY_OF_MONTH) + "/" + (fechaEmision.get(Calendar.MONTH)+1) + "/" + fechaEmision.get(Calendar.YEAR) + "\n" +
 				"- Importe: " + importe + "\n";
 	}
 }
