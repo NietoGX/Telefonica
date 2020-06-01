@@ -23,7 +23,7 @@ public interface ControladorEmpresa {
      Collection<Cliente> mostrarListaClientes() throws ExcepcionListaClientesVacia;
      boolean darDeAltaLlamada(String nif, String numDestino, Calendar fecha, int duracion) throws ExcepcionClienteNoEncontrado;
      List<Llamada> listarLlamadas(String nif) throws ExcepcionListaLlamadasVacia ;
-     Factura emitirFacturas(String nif) throws ExcepcionClienteNoEncontrado ;
+     Factura emitirFacturas(String nif) throws ExcepcionClienteNoEncontrado, ExcepcionListaLlamadasVacia;
      Factura mostrarFactura(String nif, int codFactura) throws ExcepcionListaFacturasVacia, ExcepcionFacturaNoEncontrada;
      List<Factura> mostrarFacturas(String nif) throws ExcepcionListaFacturasVacia ;
      Collection<Factura> mostrarFacturasFechas(String nif, Calendar fechaInicio, Calendar fechaFin) throws ExcepcionClienteNoEncontrado, ExcepcionListaFacturasVacia, ExcepcionFechas;

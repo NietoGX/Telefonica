@@ -8,11 +8,13 @@ public class Llamada implements TieneFecha, Serializable {
 	private String telefono;
 	private Calendar fecha;
 	private int duracion;
+	private boolean facturada;
 
-	public Llamada(String telefono, Calendar fecha, int duracion) {
+	public Llamada(String telefono, Calendar fecha, int duracion, boolean facturada) {
 		this.telefono = telefono;
 		this.fecha = fecha;
 		this.duracion = duracion;
+		this.facturada = facturada;
 	}
 
 	public String getTelefono() {
@@ -25,6 +27,14 @@ public class Llamada implements TieneFecha, Serializable {
 
 	public int getDuracion() {
 		return duracion;
+	}
+
+	public boolean getFacturada() {
+		return facturada;
+	}
+
+	public void setFacturada(boolean facturada) {
+		this.facturada = facturada;
 	}
 
 	public String toString() {

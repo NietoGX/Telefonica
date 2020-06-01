@@ -10,14 +10,12 @@ public class Factura implements TieneFecha, Serializable {
 	private int codFactura;
 	private Tarifa tarifa;
 	private Calendar fechaEmision;
-	private long periodo;
 	private double importe;
 	
-	public Factura(int codFactura, Tarifa tarifa, Calendar fecha, long periodo, double importe) {
+	public Factura(int codFactura, Tarifa tarifa, Calendar fecha, double importe) {
 		this.codFactura = codFactura;
 		this.tarifa = tarifa;
 		this.fechaEmision = fecha;
-		this.periodo = periodo;
 		this.importe = importe;
 	}
 
@@ -31,10 +29,6 @@ public class Factura implements TieneFecha, Serializable {
 
 	public Calendar getFecha() {
 		return fechaEmision;
-	}
-	
-	public long getPeriodo() {
-		return periodo;
 	}
 
 	public double getImporte() {

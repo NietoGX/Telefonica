@@ -116,7 +116,7 @@ class EmpresaTelefoniaExcepcionTest {
 
     @Test
     @Order(5)
-    void emitirFacturas() throws ExcepcionClienteNoEncontrado {
+    void emitirFacturas() throws ExcepcionClienteNoEncontrado, ExcepcionListaLlamadasVacia {
         for (String nif : nifs) {
             int size = modeloEmpresa.facturas.size(); size++;
             modeloEmpresa.emitirFacturas(nif);

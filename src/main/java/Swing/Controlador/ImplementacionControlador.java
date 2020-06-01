@@ -43,7 +43,7 @@ public class ImplementacionControlador implements ControladorEmpresa {
     public List<Llamada> listarLlamadas(String nif) throws ExcepcionListaLlamadasVacia {
         return modelo.listarLlamadas(nif);
     }
-    public Factura emitirFacturas(String nif) throws ExcepcionClienteNoEncontrado {
+    public Factura emitirFacturas(String nif) throws ExcepcionClienteNoEncontrado, ExcepcionListaLlamadasVacia {
         return modelo.emitirFacturas(nif);
     }
     public Factura mostrarFactura(String nif, int codFactura) throws ExcepcionListaFacturasVacia, ExcepcionFacturaNoEncontrada {

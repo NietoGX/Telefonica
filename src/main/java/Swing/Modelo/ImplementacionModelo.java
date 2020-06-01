@@ -17,6 +17,7 @@ public class ImplementacionModelo implements Serializable, ModeloEmpresa {
     public List<Llamada> llamadas;
     public HashMap<String, List<Factura>> facturasPorNif;
     public List<Factura> facturas;
+    public int idFactura;
 
     public ImplementacionModelo() {
         clientes = new HashMap<>();
@@ -24,6 +25,7 @@ public class ImplementacionModelo implements Serializable, ModeloEmpresa {
         llamadasPorNif = new HashMap<>();
         facturas = new ArrayList<>();
         facturasPorNif = new HashMap<>();
+        idFactura = 0;
     }
 
     public boolean añadirCliente(Cliente cliente) throws ExcepcionClienteYaRegistrado {
@@ -87,7 +89,7 @@ public class ImplementacionModelo implements Serializable, ModeloEmpresa {
     }
 
     public boolean darDeAltaLlamada(String nif, String numDestino, Calendar fecha, int duracion) throws ExcepcionClienteNoEncontrado {
-        Llamada llamada = new Llamada(numDestino, fecha, duracion);
+        Llamada llamada = new Llamada(numDestino, fecha, duracion, false);
         llamadas.add(llamada);
 
         if(clientes.get(nif)==null){
@@ -112,29 +114,31 @@ public class ImplementacionModelo implements Serializable, ModeloEmpresa {
             throw new ExcepcionListaLlamadasVacia();
     }
 
-    public Factura emitirFacturas(String nif) throws ExcepcionClienteNoEncontrado {
+    public Factura emitirFacturas(String nif) throws ExcepcionClienteNoEncontrado, ExcepcionListaLlamadasVacia {
         List<Llamada> llamadas = llamadasPorNif.get(nif);
-        Calendar fechaMin = Calendar.getInstance();
-        Calendar fechaMax = Calendar.getInstance();
         Cliente cliente = clientes.get(nif);
 
+        if (llamadas == null)
+            throw new ExcepcionListaLlamadasVacia();
+        if (cliente == null)
+            throw new ExcepcionClienteNoEncontrado();
+
         double importe = 0;
+        int numLlamadas =  0;
+        Tarifa tarifa = cliente.getTarifa();
 
-        if (llamadas != null) {
-            Tarifa tarifa = cliente.getTarifa();
-            for (Llamada llamada : llamadas) {
+        for (Llamada llamada : llamadas) {
+            if (!llamada.getFacturada()) {
                 importe += tarifa.getPrecioCorrecto(llamada, tarifa);
-                Calendar fecha = llamada.getFecha();
-
-                if (fecha.compareTo(fechaMin) < 0) fechaMin = fecha;
-                else if (fecha.compareTo(fechaMin) > 0) fechaMax = fecha;
+                numLlamadas += 1;
+                llamada.setFacturada(true);
             }
+        }
 
-            long diferenciaMilis = (fechaMax.getTime().getTime() - fechaMin.getTime().getTime());
-            int diferenciaDias = (int) diferenciaMilis / 86400000;
+        if (numLlamadas > 0) {
             importe = importe / 60;
-
-            Factura factura = new Factura(facturas.hashCode(), tarifa, Calendar.getInstance(), diferenciaDias, importe);
+            Factura factura = new Factura(idFactura, tarifa, Calendar.getInstance(), importe);
+            idFactura += 1;
             facturas.add(factura);
 
             if(facturasPorNif.get(nif) == null)
@@ -144,7 +148,8 @@ public class ImplementacionModelo implements Serializable, ModeloEmpresa {
 
             return factura;
         } else
-            throw new ExcepcionClienteNoEncontrado();
+            return null;
+
     }
 
     public Factura mostrarFactura(String nif, int codFactura) throws ExcepcionListaFacturasVacia, ExcepcionFacturaNoEncontrada {
@@ -228,6 +233,7 @@ public class ImplementacionModelo implements Serializable, ModeloEmpresa {
             objectOutputStream.writeObject(facturasPorNif);
             objectOutputStream.writeObject(llamadas);
             objectOutputStream.writeObject(llamadasPorNif);
+            objectOutputStream.writeObject(idFactura);
 
             fileOutputStream.close();
             objectOutputStream.close();
@@ -253,6 +259,8 @@ public class ImplementacionModelo implements Serializable, ModeloEmpresa {
             facturasPorNif = (HashMap<String, List<Factura>>) objectInputStream.readObject();
             llamadas = (List<Llamada>) objectInputStream.readObject();
             llamadasPorNif = (HashMap<String, List<Llamada>>) objectInputStream.readObject();
+            idFactura = (int) objectInputStream.readObject();
+
 
             fileInputStream.close();
             objectInputStream.close();

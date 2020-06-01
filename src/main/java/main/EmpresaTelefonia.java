@@ -298,7 +298,7 @@ public class EmpresaTelefonia implements Serializable {
 		try {
 			empresa.emitirFacturas(nif);
 			System.out.println("Factura emitida con éxito");
-		} catch (ExcepcionClienteNoEncontrado ex) {
+		} catch (ExcepcionClienteNoEncontrado | ExcepcionListaLlamadasVacia ex) {
 			System.out.println(ex.getMessage());
 		}
 	}

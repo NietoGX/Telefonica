@@ -33,7 +33,7 @@ public class DecoradorTarifaTest {
         String string = "19/04/2020 18:42"; // Domingo
         fecha.setTime(formatter.parse(string));
 
-        Llamada llamada = new Llamada(numDestino, fecha, duracionLlamada);
+        Llamada llamada = new Llamada(numDestino, fecha, duracionLlamada, false);
 
         Tarifa tarifa = FactoriaTarifa.basica();
         assertEquals(tarifa.getPrecioCorrecto(llamada, tarifa), 0.15 * duracionLlamada);
@@ -46,7 +46,7 @@ public class DecoradorTarifaTest {
 
         string = "20/04/2020 18:42"; // Lunes
         fecha.setTime(formatter.parse(string));
-        llamada = new Llamada(numDestino, fecha, duracionLlamada);
+        llamada = new Llamada(numDestino, fecha, duracionLlamada, false);
 
         // Comprobación de que cojemos la tarifa que toca aunque tengamos las 2 añadidas.
         assertEquals(tarifa.getPrecioCorrecto(llamada, tarifa), 0.05 * duracionLlamada);

@@ -1133,11 +1133,12 @@ public class Vista {
                     if(fac==null){
                         VistaEmitirFactura();
                         JOptionPane.showMessageDialog(ventana, "No se ha podido crear la factura.");
+                    } else {
+                        JOptionPane.showMessageDialog(ventana, "Factura: "+ fac.getCodFactura()+" creada con éxito.");
                     }
-                    JOptionPane.showMessageDialog(ventana, "Factura: "+ fac.getCodFactura()+" creada con éxito.");
 
                     res.updateUI();
-                } catch (ExcepcionClienteNoEncontrado ex) {
+                } catch (ExcepcionClienteNoEncontrado | ExcepcionListaLlamadasVacia ex) {
                     VistaEmitirFactura();
                     JOptionPane.showMessageDialog(ventana, ex.getMessage());
 
