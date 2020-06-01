@@ -20,8 +20,7 @@ public class TarifaDomingo extends DecoradorTarifa {
             return llamada.getDuracion() * 0.15;
     }
 
-    @Override
     public String toString() {
-        return "Tarifa Domingo: " + PRECIO + "€";
+        return super.toString() + "Tarifa Domingo: " + PRECIO + "€ ";
     }
 }

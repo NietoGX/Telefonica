@@ -20,6 +20,6 @@ public class TarifaBasica extends Tarifa {
 
     @Override
     public String toString() {
-        return "Tarifa Basica: " + PRECIO + "€";
+        return "Tarifa Basica: " + PRECIO + "€ ";
     }
 }

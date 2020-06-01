@@ -17,7 +17,7 @@ public abstract class DecoradorTarifa extends Tarifa{
             return tarifaDecorada.getPrecioCorrecto(llamada, tarifa);
     }
 
-    public Tarifa getTarifaDecorada() {
-        return tarifaDecorada;
+    public String toString() {
+        return tarifaDecorada.toString();
     }
 }

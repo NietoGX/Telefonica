@@ -24,6 +24,6 @@ public class TarifaTarde extends DecoradorTarifa {
 
     @Override
     public String toString() {
-        return "Tarifa Tarde: " + PRECIO + "€";
+        return super.toString() + "Tarifa Tarde (16-20h): " + PRECIO + "€ ";
     }
 }
