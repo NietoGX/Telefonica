@@ -1155,19 +1155,18 @@ public class Vista {
             if (texto.equals("Enviar")) {
                 res.removeAll();
                 try{
-                    Collection<Factura> facs= controlador.mostrarFacturas(nifT.getText().toString());
-
+                    List<Factura> col = controlador.mostrarFacturas(nifT.getText().toString());
                     DefaultListModel<String> datos = new DefaultListModel<>();
-                    for (Factura factura : facs) {
-                        datos.addElement(factura.toString());
+                    for (Factura fac : col) {
+                        datos.addElement(fac.toString());
                     }
-                    JList<String> facturas = new JList<String>(datos);
-                    JScrollPane scroll = new JScrollPane(facturas);
-                    scroll.setPreferredSize(new Dimension(1080, 400));
-                    facturas.setVisibleRowCount(30);
-                    mid.add(scroll);
+                    JList<String> clientes = new JList<String>(datos);
+                    JScrollPane scroll = new JScrollPane(clientes);
+                    scroll.setPreferredSize(new Dimension(1080, 100));
+                    clientes.setVisibleRowCount(30);
+                    res.add(scroll);
+
                     scroll.updateUI();
-                    mid.updateUI();
                     res.updateUI();
                 } catch (ExcepcionListaFacturasVacia ex) {
                     VistaMostrarFacturas();

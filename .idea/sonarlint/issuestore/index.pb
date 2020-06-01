@@ -15,8 +15,6 @@ V
 &src/main/java/tarifa/TarifaBasica.java,8\5\850edbd16ff3a908741234f86945686fc805477c
 W
 'src/main/java/tarifa/TarifaDomingo.java,d\0\d07a5d3276e5aef7e3eb8ce3bddeec4549944696
-9
-	datos.bin,2\8\28402e6f47b8d0d35ecf7ae95683aa95f40302c6
 j
 :src/main/java/InterfazSwing/Vista/ImplementacionVista.java,9\3\93c35b8f8fe10f307df3ce80d116e96e9460ca85
 w
@@ -25,12 +23,8 @@ P
  src/main/java/datos/Cliente.java,b\7\b7487c6201ad8ad40226611710b9c5d61284bdc7
 h
 8src/main/java/InterfazSwing/Controlador/Controlador.java,1\6\160c07235a233f6131ff9fc81367c63a1798e25b
-h
-8src/main/java/Swing/Modelo/EmpresaTelefoniaInterfaz.java,4\f\4fdd3b178211ed7c8990cd0ff9e5526ecf33d54e
 g
 7src/main/java/Swing/Controlador/ControladorEmpresa.java,7\8\789bf6899d3efb446f64cd544bc7547532a59619
-`
-0src/main/java/Swing/Modelo/EmpresaTelefonia.java,4\6\46ce0889a51fff828dffc0c3fc5a3bbe8ce4a1eb
 M
 src/main/java/Swing/Main.java,5\a\5ac8ebcff7e84a8ef76043a18d895c219d5b25e3
 U
@@ -39,3 +33,5 @@ n
 >src/main/java/Swing/Controlador/ImplementacionControlador.java,5\a\5a5b3a4ff83f405fa28e9731d9314981ff428aa2
 T
 $src/main/java/Swing/Vista/Vista.java,8\2\82fd3ec5a93a57fa97d8d9aa7e78831c129d71e8
+d
+4src/main/java/Swing/Modelo/ImplementacionModelo.java,6\2\62f73bfcb7b17e4562235e6303b6c8ed9bb994a8

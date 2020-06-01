@@ -1,15 +1,4 @@
 
 t	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(¼±å¼ÿÿÿÿÿ
-d
-java:S1128"BRemove this unused import 'InterfazSwing.Controlador.Controlador'.(–éÀìıÿÿÿÿ8åØëò¥.
-h
-java:S1128"FRemove this unused import 'InterfazSwing.Modelo.ImplementacionModelo'.(ƒ—´æûÿÿÿÿ8˜óğò¥.
-s
-java:S1128"QRemove this unused import 'InterfazSwing.Controlador.ImplementaciÃ³nControlador'.(–¨ıËıÿÿÿÿ8¾­ìò¥.
 Z
-java:S1197"8Move the array designator from the variable to the type.(¡şÏÖøÿÿÿÿ8Ïôêò¥.
-^
-java:S1128"ARemove this unused import 'Swing.Controlador.ControladorEmpresa'.(¶Ä¡8Öœîò¥.
-a
-java:S1128"DRemove this unused import 'InterfazSwing.Vista.ImplementacionVista'.(æ¼”§8É“ïò¥.
-]	java:S125"<This block of commented-out lines of code should be removed.(ÏĞ˜üıÿÿÿÿ8„Šşò¥.
+java:S1197"8Move the array designator from the variable to the type.(¡şÏÖøÿÿÿÿ8Ïôêò¥.
