@@ -55,6 +55,7 @@ public class Vista {
     JRadioButton r2= null;
     JRadioButton r3= null;
     JRadioButton r4=null;
+    String patternFechaClientes = "dd/MM/yyyy";
 
     String patternFecha = "dd/MM/yyyy HH:mm";
 
@@ -320,7 +321,7 @@ public class Vista {
         JLabel provincia= new JLabel("Provincia: ");
         JLabel codPos= new JLabel("Código postal: ");
         JLabel email= new JLabel("E-mail: ");
-        JLabel fecha= new JLabel("Fecha: ");
+        JLabel fecha= new JLabel("Fecha(dd/mm/yyyy): ");
         JLabel tarifa= new JLabel("Tarifa: ");
 
         labels.add(nombre);
@@ -406,7 +407,7 @@ public class Vista {
         JLabel provincia= new JLabel("Provincia: ");
         JLabel codPos= new JLabel("Código postal: ");
         JLabel email= new JLabel("E-mail: ");
-        JLabel fecha= new JLabel("Fecha: ");
+        JLabel fecha= new JLabel("Fecha(dd/mm/yyyy): ");
         JLabel tarifa= new JLabel("Tarifa: ");
 
         labels.add(nombre);
@@ -557,9 +558,9 @@ public class Vista {
         JPanel mostrarClienteEntreFechas= new JPanel();
         mostrarClienteEntreFechas.setLayout(new BoxLayout(mostrarClienteEntreFechas,BoxLayout.X_AXIS));
 
-        JLabel fechaIni= new JLabel("Fecha inicio: ");
+        JLabel fechaIni= new JLabel("Fecha inicio(dd/mm/yyyy):  ");
         fecha1= new JTextField(12);
-        JLabel fechaFin= new JLabel("          Fecha fin: ");
+        JLabel fechaFin= new JLabel("          Fecha fin(dd/mm/yyyy): ");
         fecha2= new JTextField(12);
         mostrarClienteEntreFechas.add(fechaIni);
         mostrarClienteEntreFechas.add(fecha1);
@@ -664,9 +665,9 @@ public class Vista {
 
         JLabel nif= new JLabel("NIF: ");
         nifT= new JTextField(12);
-        JLabel fechaIni= new JLabel("Fecha inicio: ");
+        JLabel fechaIni= new JLabel("Fecha inicio(dd/mm/yyyy): ");
         fecha1= new JTextField(12);
-        JLabel fechaFin= new JLabel("          Fecha fin: ");
+        JLabel fechaFin= new JLabel("          Fecha fin(dd/mm/yyyy): ");
         fecha2= new JTextField(12);
 
         mostrarFacturasEntreFechas.add(nif);
@@ -701,7 +702,7 @@ public class Vista {
         nifT= new JTextField(12);
         JLabel telefono= new JLabel("Teléfono: ");
         telefonoT= new JTextField(12);
-        JLabel fechaAlta= new JLabel("Fecha de alta: ");
+        JLabel fechaAlta= new JLabel("Fecha de alta(dd/mm/yyyy hh:mm): ");
         fecha1= new JTextField(12);
         JLabel tiempo= new JLabel("Tiempo: ");
         durT= new JTextField(12);
@@ -762,9 +763,9 @@ public class Vista {
 
         JLabel nif= new JLabel("NIF: ");
         nifT= new JTextField(12);
-        JLabel fechaIni= new JLabel("Fecha inicio: ");
+        JLabel fechaIni= new JLabel("Fecha inicio(dd/mm/yyyy): ");
         fecha1= new JTextField(12);
-        JLabel fechaFin= new JLabel("          Fecha fin: ");
+        JLabel fechaFin= new JLabel("          Fecha fin(dd/mm/yyyy): ");
         fecha2= new JTextField(12);
 
         mostrarLlamadasEntreFechas.add(nif);
@@ -827,7 +828,7 @@ public class Vista {
                 mid.removeAll();
                 try {
                     Direccion dir = new Direccion(provinciaT.getText().toString(), poblacionT.getText().toString(), codPosT.getText().toString());
-                    DateFormat df = new SimpleDateFormat(patternFecha);
+                    DateFormat df = new SimpleDateFormat(patternFechaClientes);
                     Calendar cal = Calendar.getInstance();
                     cal.setTime(df.parse(fecha1.getText().toString()));
                     if (r1.isSelected()) {
@@ -891,7 +892,7 @@ public class Vista {
                 mid.removeAll();
                 try {
                     Direccion dir = new Direccion(provinciaT.getText().toString(), poblacionT.getText().toString(), codPosT.getText().toString());
-                    DateFormat df = new SimpleDateFormat(patternFecha);
+                    DateFormat df = new SimpleDateFormat(patternFechaClientes);
                     Calendar cal = Calendar.getInstance();
                     cal.setTime(df.parse(fecha1.getText()));
                     if (r1.isSelected()) {
@@ -1079,7 +1080,7 @@ public class Vista {
             if (texto.equals("Enviar")) {
                 mid.removeAll();
                 try {
-                    DateFormat df = new SimpleDateFormat(patternFecha);
+                    DateFormat df = new SimpleDateFormat(patternFechaClientes);
                     Calendar cal = Calendar.getInstance();
                     cal.setTime(df.parse(fecha1.getText().toString()));
                     Calendar cal2 = Calendar.getInstance();
@@ -1231,7 +1232,7 @@ public class Vista {
             if (texto.equals("Enviar")) {
                 mid.removeAll();
                 try {
-                    DateFormat df = new SimpleDateFormat(patternFecha);
+                    DateFormat df = new SimpleDateFormat(patternFechaClientes);
                     Calendar cal = Calendar.getInstance();
                     cal.setTime(df.parse(fecha1.getText().toString()));
                     Calendar cal2 = Calendar.getInstance();
@@ -1352,7 +1353,7 @@ public class Vista {
             if (texto.equals("Enviar")) {
                 mid.removeAll();
                 try {
-                    DateFormat df = new SimpleDateFormat(patternFecha);
+                    DateFormat df = new SimpleDateFormat(patternFechaClientes);
                     Calendar cal = Calendar.getInstance();
                     cal.setTime(df.parse(fecha1.getText().toString()));
                     Calendar cal2 = Calendar.getInstance();
