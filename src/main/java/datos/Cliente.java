@@ -59,7 +59,7 @@ public abstract class Cliente extends FactoriaCliente implements TieneFecha, Ser
 				"- NIF: " + nif + "\n" +
 				"- Direccion: \n" + direccion.toString() +
 				"- Correo: " + correo + "\n" +
-				"- Fecha de Alta: " + fechaAlta.get(Calendar.DAY_OF_MONTH) + "/" + fechaAlta.get(Calendar.MONTH) + "/" + fechaAlta.get(Calendar.YEAR) + "\n" +
+				"- Fecha de Alta: " + fechaAlta.get(Calendar.DAY_OF_MONTH) + "/" + (fechaAlta.get(Calendar.MONTH)+1) + "/" + fechaAlta.get(Calendar.YEAR) + "\n" +
 				"- " + tarifa.toString() + "\n";
 	}
 
