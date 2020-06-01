@@ -54,6 +54,7 @@ public class Vista {
     JRadioButton r1= null;
     JRadioButton r2= null;
     JRadioButton r3= null;
+    JRadioButton r4=null;
 
     String patternFecha = "dd/MM/yyyy HH:mm";
 
@@ -341,17 +342,20 @@ public class Vista {
         correoT= new JTextField(30);
         fecha1= new JTextField(30);
         r1= new JRadioButton("Básica");
-        r2= new JRadioButton("Noche");
+        r2= new JRadioButton("Tarde");
         r3= new JRadioButton("Domingo");
+        r4= new JRadioButton("Tarde y Domingo");
         ButtonGroup tarifaT= new ButtonGroup();
         tarifaT.add(r1);
         tarifaT.add(r2);
         tarifaT.add(r3);
+        tarifaT.add(r4);
 
         JPanel radios= new JPanel();
         radios.add(r1);
         radios.add(r2);
         radios.add(r3);
+        radios.add(r4);
 
         radios.setLayout(new BoxLayout(radios,BoxLayout.X_AXIS));
 
@@ -422,17 +426,20 @@ public class Vista {
         correoT= new JTextField(30);
         fecha1= new JTextField(30);
         r1= new JRadioButton("Básica");
-        r2= new JRadioButton("Noche");
+        r2= new JRadioButton("Tarde");
         r3= new JRadioButton("Domingo");
+        r4=new JRadioButton("Tarde y Domingo");
         ButtonGroup tarifaT= new ButtonGroup();
         tarifaT.add(r1);
         tarifaT.add(r2);
         tarifaT.add(r3);
+        tarifaT.add(r4);
 
         JPanel radios= new JPanel();
         radios.add(r1);
         radios.add(r2);
         radios.add(r3);
+        radios.add(r4);
 
         radios.setLayout(new BoxLayout(radios,BoxLayout.X_AXIS));
 
@@ -492,8 +499,9 @@ public class Vista {
         cambiarTarifa.add(nifT);
 
         r1= new JRadioButton("Básica");
-        r2= new JRadioButton("Noche");
+        r2= new JRadioButton("Tarde");
         r3= new JRadioButton("Domingo");
+        r4= new JRadioButton("Tarde y Domingo");
         ButtonGroup tarifaT= new ButtonGroup();
         tarifaT.add(r1);
         tarifaT.add(r2);
@@ -505,6 +513,7 @@ public class Vista {
         cambiarTarifa.add(r1);
         cambiarTarifa.add(r2);
         cambiarTarifa.add(r3);
+        cambiarTarifa.add(r4);
         cambiarTarifa.add(submit);
         mid.add(cambiarTarifa);
         cambiarTarifa.updateUI();
@@ -847,6 +856,16 @@ public class Vista {
                             VistaDarDeAltaParticular();
                             JOptionPane.showMessageDialog(ventana, "Ha habido un error al crear el usuario");
                         }
+                    }else if (r4.isSelected()){
+                        if(controlador.creaParticular(nombreT.getText().toString(),apellidoT.getText(), nifT.getText().toString(), dir,correoT.getText().toString(),cal, FactoriaTarifa.domingo(FactoriaTarifa.tarde(FactoriaTarifa.basica())))){
+                            //CAMBIAR TARIFA A NOCHE
+                            JOptionPane.showMessageDialog(ventana, "Usuario creado con éxito!");
+                        }
+                        else{
+                            VistaDarDeAltaEmpresa();
+                            JOptionPane.showMessageDialog(ventana, "Ha habido un error al crear el usuario");
+                        }
+                        System.out.println("DOMINGO");
                     } else {
                         VistaDarDeAltaParticular();
                         JOptionPane.showMessageDialog(ventana, "Selecciona un tipo de tarifa");
@@ -899,6 +918,16 @@ public class Vista {
                     }
                     else if (r3.isSelected()){
                         if(controlador.creaEmpresa(nombreT.getText().toString(), nifT.getText().toString(), dir,correoT.getText().toString(),cal, FactoriaTarifa.domingo(FactoriaTarifa.basica()))){
+                            //CAMBIAR TARIFA A NOCHE
+                            JOptionPane.showMessageDialog(ventana, "Usuario creado con éxito!");
+                        }
+                        else{
+                            VistaDarDeAltaEmpresa();
+                            JOptionPane.showMessageDialog(ventana, "Ha habido un error al crear el usuario");
+                        }
+                        System.out.println("DOMINGO");
+                    }else if (r4.isSelected()){
+                        if(controlador.creaEmpresa(nombreT.getText().toString(), nifT.getText().toString(), dir,correoT.getText().toString(),cal, FactoriaTarifa.domingo(FactoriaTarifa.tarde(FactoriaTarifa.basica())))){
                             //CAMBIAR TARIFA A NOCHE
                             JOptionPane.showMessageDialog(ventana, "Usuario creado con éxito!");
                         }
@@ -966,6 +995,9 @@ public class Vista {
                    } else if (r3.isSelected()) {
                        Tarifa cambio= FactoriaTarifa.domingo(tar);
                        cli.setTarifa(cambio);
+                       JOptionPane.showMessageDialog(ventana, "Tarifa del cliente: "+cli.getNombre()+" cambiada a domingo");
+                   }else if (r4.isSelected()) {
+                       controlador.cambiarTarifa(nifT.getText(),3);
                        JOptionPane.showMessageDialog(ventana, "Tarifa del cliente: "+cli.getNombre()+" cambiada a domingo");
                    }else{
                        VistaCambiarTarifa();
