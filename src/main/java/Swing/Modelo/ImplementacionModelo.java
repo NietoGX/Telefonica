@@ -14,16 +14,12 @@ import java.util.*;
 public class ImplementacionModelo implements Serializable, ModeloEmpresa {
     public HashMap<String, Cliente> clientes;
     public HashMap<String, List<Llamada>> llamadasPorNif;
-    public List<Llamada> llamadas;
     public HashMap<String, List<Factura>> facturasPorNif;
-    public List<Factura> facturas;
     public int idFactura;
 
     public ImplementacionModelo() {
         clientes = new HashMap<>();
-        llamadas = new ArrayList<>();
         llamadasPorNif = new HashMap<>();
-        facturas = new ArrayList<>();
         facturasPorNif = new HashMap<>();
         idFactura = 0;
     }
@@ -90,17 +86,16 @@ public class ImplementacionModelo implements Serializable, ModeloEmpresa {
 
     public boolean darDeAltaLlamada(String nif, String numDestino, Calendar fecha, int duracion) throws ExcepcionClienteNoEncontrado {
         Llamada llamada = new Llamada(numDestino, fecha, duracion, false);
-        llamadas.add(llamada);
 
         if(clientes.get(nif)==null){
             throw new ExcepcionClienteNoEncontrado();
         }
 
         if(llamadasPorNif.get(nif) == null){
-            llamadasPorNif.put(nif, llamadas);
-        } else {
-            llamadasPorNif.replace(nif, llamadas);
+            llamadasPorNif.put(nif, new ArrayList<>());
         }
+
+        llamadasPorNif.get(nif).add(llamada);
 
         return true;
     }
@@ -139,12 +134,12 @@ public class ImplementacionModelo implements Serializable, ModeloEmpresa {
             importe = importe / 60;
             Factura factura = new Factura(idFactura, tarifa, Calendar.getInstance(), importe);
             idFactura += 1;
-            facturas.add(factura);
 
-            if(facturasPorNif.get(nif) == null)
-                facturasPorNif.put(nif, facturas);
-            else
-                facturasPorNif.replace(nif, facturas);
+            if(facturasPorNif.get(nif) == null) {
+                facturasPorNif.put(nif, new ArrayList<>());
+            }
+
+            facturasPorNif.get(nif).add(factura);
 
             return factura;
         } else
@@ -229,9 +224,7 @@ public class ImplementacionModelo implements Serializable, ModeloEmpresa {
             ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream);
 
             objectOutputStream.writeObject(clientes);
-            objectOutputStream.writeObject(facturas);
             objectOutputStream.writeObject(facturasPorNif);
-            objectOutputStream.writeObject(llamadas);
             objectOutputStream.writeObject(llamadasPorNif);
             objectOutputStream.writeObject(idFactura);
 
@@ -255,9 +248,7 @@ public class ImplementacionModelo implements Serializable, ModeloEmpresa {
             ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream);
 
             clientes = (HashMap<String, Cliente>) objectInputStream.readObject();
-            facturas = (List<Factura>) objectInputStream.readObject();
             facturasPorNif = (HashMap<String, List<Factura>>) objectInputStream.readObject();
-            llamadas = (List<Llamada>) objectInputStream.readObject();
             llamadasPorNif = (HashMap<String, List<Llamada>>) objectInputStream.readObject();
             idFactura = (int) objectInputStream.readObject();
 

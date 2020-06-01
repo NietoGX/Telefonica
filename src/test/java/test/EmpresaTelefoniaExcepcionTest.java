@@ -92,10 +92,11 @@ class EmpresaTelefoniaExcepcionTest {
     @Order(3)
     void altaLlamadas() throws ExcepcionClienteNoEncontrado {
         for (String nif : nifs) {
-            int size = modeloEmpresa.llamadas.size();
+            int size = 0;
+            try {size = modeloEmpresa.llamadasPorNif.get(nif).size();} catch (NullPointerException ex) {}
             String numDestino = Integer.toString(random.nextInt(999999999));
             modeloEmpresa.darDeAltaLlamada(nif, numDestino, Calendar.getInstance(), random.nextInt(3600));
-            assertEquals(modeloEmpresa.llamadas.size(), size+1);
+            assertEquals(modeloEmpresa.llamadasPorNif.get(nif).size(), size+1);
         }
     }
 
@@ -118,9 +119,10 @@ class EmpresaTelefoniaExcepcionTest {
     @Order(5)
     void emitirFacturas() throws ExcepcionClienteNoEncontrado, ExcepcionListaLlamadasVacia {
         for (String nif : nifs) {
-            int size = modeloEmpresa.facturas.size(); size++;
+            int size = 0;
+            try {size = modeloEmpresa.facturasPorNif.get(nif).size();} catch (NullPointerException ex) {} size++;
             modeloEmpresa.emitirFacturas(nif);
-            assertEquals(modeloEmpresa.facturas.size(), size);
+            assertEquals(modeloEmpresa.facturasPorNif.get(nif).size(), size);
         }
     }
 
